@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.html)",
+        "hook": "bash -c 'FILE=\"$CLAUDE_FILE_PATH\"; echo \"=== POST-BUILD VALIDATION ===\"; SIZE=$(wc -c < \"$FILE\" 2>/dev/null || echo 0); echo \"File size: ${SIZE} bytes\"; if [ \"$SIZE\" -gt 51200 ]; then echo \"WARNING: File exceeds 50KB target ($SIZE bytes)\"; fi; H1=$(grep -c \"<h1\" \"$FILE\" 2>/dev/null || echo 0); echo \"H1 tags found: $H1\"; if [ \"$H1\" -ne 1 ]; then echo \"ERROR: Expected exactly 1 <h1> tag, found $H1\"; fi; SECTIONS=$(grep -c \"<section\" \"$FILE\" 2>/dev/null || echo 0); echo \"Sections found: $SECTIONS\"; if [ \"$SECTIONS\" -lt 8 ]; then echo \"WARNING: Expected 8+ sections, found $SECTIONS\"; fi; CALENDLY=$(grep -c \"calendly.com\" \"$FILE\" 2>/dev/null || echo 0); echo \"Calendly links: $CALENDLY\"; if [ \"$CALENDLY\" -lt 3 ]; then echo \"WARNING: Expected 3+ CTA links to Calendly, found $CALENDLY\"; fi; IMG=$(grep -c \"<img\" \"$FILE\" 2>/dev/null || echo 0); if [ \"$IMG\" -gt 0 ]; then echo \"ERROR: Found $IMG <img> tags — all visuals must be CSS/SVG/HTML only\"; fi; INTER=$(grep -ic \"inter\" \"$FILE\" 2>/dev/null || echo 0); ROBOTO=$(grep -ic \"roboto\" \"$FILE\" 2>/dev/null || echo 0); ARIAL=$(grep -ic \"arial\" \"$FILE\" 2>/dev/null || echo 0); if [ \"$INTER\" -gt 0 ] || [ \"$ROBOTO\" -gt 0 ] || [ \"$ARIAL\" -gt 0 ]; then echo \"ERROR: Banned font detected (Inter/Roboto/Arial)\"; fi; ARIA=$(grep -c \"aria-expanded\" \"$FILE\" 2>/dev/null || echo 0); echo \"aria-expanded attributes: $ARIA\"; if [ \"$ARIA\" -lt 4 ]; then echo \"WARNING: FAQ accordion needs aria-expanded on each item (found $ARIA)\"; fi; echo \"=== VALIDATION COMPLETE ===\"'"
+      },
+      {
+        "matcher": "Edit(*.html)",
+        "hook": "bash -c 'FILE=\"$CLAUDE_FILE_PATH\"; SIZE=$(wc -c < \"$FILE\" 2>/dev/null || echo 0); echo \"Post-edit size: ${SIZE} bytes\"; if [ \"$SIZE\" -gt 51200 ]; then echo \"WARNING: File now exceeds 50KB target\"; fi; H1=$(grep -c \"<h1\" \"$FILE\" 2>/dev/null || echo 0); if [ \"$H1\" -ne 1 ]; then echo \"ERROR: H1 count is $H1 (expected 1)\"; fi'"
+      }
+    ]
+  }
+}
