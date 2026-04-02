@@ -429,7 +429,107 @@
     .footer-stripe { margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--grey-dark); }
     .footer-stripe svg { width: 14px; height: 14px; }
 
-    /* Media Queries */
+    /* === Mobile-first (base is 375px) === */
+
+    /* Mobile: max 767px */
+    @media (max-width: 767px) {
+      body { font-size: 15px; }
+      .container { padding: 0 20px; }
+
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(15,23,42,0.98);
+        padding: 24px; gap: 16px; border-bottom: 1px solid rgba(10,107,107,0.15);
+      }
+      .nav-links.open .nav-cta-link { text-align: center; padding: 14px 24px; }
+
+      /* Hero */
+      #hero { padding: 110px 0 48px; }
+      .hero-grid { gap: 32px; }
+      .hero-content h1 { font-size: 2.2rem; max-width: 100%; }
+      .hero-sub { font-size: 0.95rem; max-width: 100%; margin-bottom: 28px; }
+      .hero-badge { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 20px; }
+      .hero-buttons { flex-direction: column; gap: 12px; }
+      .hero-buttons .btn-primary,
+      .hero-buttons .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+      .hero-proof { flex-direction: column; gap: 8px; font-size: 0.78rem; line-height: 1.5; }
+      .iphone-wrap { max-width: 260px; }
+      .iphone-frame { padding: 44px 14px 20px; border-radius: 32px; }
+      .iphone-notch { width: 76px; height: 22px; top: 12px; }
+      .bubble { font-size: 0.75rem; padding: 9px 12px; }
+
+      /* Problem */
+      #problem { padding: 80px 0; }
+      .problem-layout { gap: 32px; }
+      .problem-img-wrap { border-radius: 10px; }
+      .problem-img-stat { bottom: 12px; left: 12px; padding: 12px 16px; }
+      .problem-img-stat-num { font-size: 1.25rem; }
+      .problem-card { padding: 20px 18px 20px 16px; }
+      .problem-card p { font-size: 0.9rem; }
+
+      /* How It Works */
+      #how-it-works { padding: 80px 0; }
+      .hiw-header { margin-bottom: 40px; }
+      .hiw-steps { gap: 28px; }
+      .hiw-step { grid-template-columns: 40px 1fr; gap: 14px; }
+      .hiw-num { width: 40px; height: 40px; font-size: 0.95rem; }
+      .hiw-steps::before { left: 20px; }
+
+      /* Stats */
+      #stats { padding: 80px 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .stat-card { padding: 20px 12px; border-radius: 10px; }
+      .stat-number { font-size: 1.6rem; }
+      .stat-label { font-size: 0.8rem; }
+      .stat-compare { font-size: 0.7rem; }
+
+      /* Case Study */
+      #case-study { padding: 80px 0; }
+      .cs-layout { gap: 28px; }
+      .cs-card { padding: 28px 20px; }
+      .cs-card h2 { font-size: 1.4rem; }
+      .cs-tags { gap: 5px; }
+      .cs-tag { font-size: 0.65rem; padding: 4px 8px; }
+      .cs-outcome { font-size: 0.88rem; padding-left: 12px; }
+      .cs-quote { font-size: 0.95rem; padding-left: 18px; }
+
+      /* Pricing */
+      #pricing { padding: 80px 0; }
+      .pricing-grid { gap: 24px; }
+      .price-card.featured { order: -1; }
+      .price-card { padding: 28px 22px; }
+      .price-name { font-size: 1.3rem; }
+      .price-amount { font-size: 2.2rem; }
+      .price-desc { font-size: 0.82rem; }
+      .price-features { gap: 12px; }
+      .price-feature { font-size: 0.85rem; }
+      .price-card .btn-primary,
+      .price-card .btn-secondary { padding: 14px 20px; font-size: 0.95rem; min-height: 50px; }
+
+      /* FAQ */
+      #faq { padding: 80px 0; }
+      .faq-header h2 { font-size: 1.6rem; }
+      .faq-question { padding: 16px 18px; font-size: 0.9rem; }
+      .faq-answer-inner { padding: 0 18px 16px; font-size: 0.85rem; }
+      .faq-icon { width: 24px; height: 24px; }
+
+      /* CTA */
+      #cta { padding: 80px 0; }
+      .cta-content h2 { font-size: 1.7rem; }
+      .cta-content p { font-size: 0.92rem; }
+      .cta-content .btn-primary { width: 100%; }
+
+      /* Footer */
+      footer { padding: 32px 0; }
+      .footer-inner { gap: 20px; }
+      .footer-inner > div:last-child { align-items: center; }
+      .footer-links { gap: 16px; }
+    }
+
+    /* Tablet: 768px+ */
     @media (min-width: 768px) {
       .hero-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
       .iphone-wrap { max-width: 300px; }
@@ -440,27 +540,14 @@
       .faq-layout { grid-template-columns: 1fr 2fr; gap: 56px; }
       .footer-inner { flex-direction: row; justify-content: space-between; }
     }
+
+    /* Desktop: 1024px+ */
     @media (min-width: 1024px) {
       .hero-content h1 { font-size: 4rem; }
       .hiw-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
       .hiw-steps::before { display: none; }
       .hiw-step { grid-template-columns: 1fr; text-align: center; }
       .hiw-num { margin: 0 auto 16px; }
-    }
-    @media (max-width: 767px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-      .nav-links.open {
-        display: flex; flex-direction: column; position: absolute;
-        top: 100%; left: 0; right: 0; background: rgba(15,23,42,0.98);
-        padding: 24px; gap: 16px; border-bottom: 1px solid rgba(10,107,107,0.15);
-      }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .stat-card { padding: 24px 16px; }
-      .stat-number { font-size: 1.75rem; }
-      #hero { padding: 130px 0 60px; }
-      .pricing-grid { gap: 32px; }
-      .price-card.featured { order: -1; }
     }
   </style>
 </head>
@@ -881,7 +968,7 @@
         alert('Payment links are being set up. Please email support@mctoyou.com to get started.');
         return;
       }
-      window.open(url, '_blank', 'noopener,noreferrer');
+      window.location.href = url;
     }
 
     document.addEventListener('DOMContentLoaded', function() {
