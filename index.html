@@ -531,49 +531,121 @@
     }
 
     @media (max-width: 767px) {
-      body { font-size: 15px; }
-      .container { width: min(100% - 32px, 640px); }
+      :root { --section-pad: clamp(68px, 18vw, 92px); --radius-xl: 24px; --radius-lg: 20px; }
+      html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+      body { font-size: 15px; line-height: 1.65; }
+      body::before { background-size: 48px 48px; opacity: 0.55; }
+      body::after, .visual-noise { opacity: 0.16; }
+      .ambient-orb { min-width: 260px; min-height: 260px; width: 78vw; height: 78vw; filter: blur(58px); opacity: 0.18; }
+      .container { width: calc(100% - 28px); max-width: 640px; }
+      .reveal { opacity: 1; transform: none; filter: none; transition-duration: 420ms; }
+      .section-eyebrow { font-size: 0.66rem; letter-spacing: 0.12em; gap: 8px; margin-bottom: 14px; }
+      .section-eyebrow::before { width: 26px; }
+      .btn-primary, .btn-secondary { width: 100%; min-height: 52px; padding: 14px 20px; font-size: 0.94rem; }
       .nav { padding-top: 10px; }
-      .nav .container { border-radius: 24px; padding: 10px 12px 10px 16px; }
+      .nav .container { width: calc(100% - 24px); max-width: none; border-radius: 22px; padding: 9px 10px 9px 14px; gap: 10px; position: relative; }
+      .nav-logo { min-width: 0; font-size: clamp(0.95rem, 4.6vw, 1.08rem); white-space: nowrap; }
+      .nav-logo::before { width: 10px; height: 10px; flex: 0 0 10px; }
       .nav-links { display: none; }
-      .nav-toggle { display: block; flex-shrink: 0; }
+      .nav-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 42px; width: 42px; height: 42px; margin-left: auto; }
+      .nav-toggle span { margin: 3px auto; }
       .nav-links.open {
-        display: flex; flex-direction: column; align-items: stretch; position: absolute;
-        top: calc(100% + 10px); left: 16px; right: 16px; padding: 18px; gap: 8px;
-        border-radius: 24px; background: rgba(7,17,31,0.96); border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: var(--shadow-card); backdrop-filter: blur(20px);
+        display: flex; flex-direction: column; align-items: stretch; position: fixed;
+        top: 76px; left: 12px; right: 12px; width: auto; padding: 14px; gap: 8px;
+        border-radius: 22px; background: rgba(7,17,31,0.97); border: 1px solid rgba(255,255,255,0.10);
+        box-shadow: 0 26px 90px rgba(0,0,0,0.56); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
       }
-      .nav-links.open a { text-align: center; padding: 13px 14px; }
-      #hero { padding-top: 112px; min-height: auto; }
-      .hero-content h1 { font-size: clamp(2.65rem, 15vw, 4.2rem); max-width: 100%; }
-      .hero-buttons { flex-direction: column; }
-      .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; }
-      .hero-proof { align-items: flex-start; }
-      .hero-metrics { grid-template-columns: 1fr; }
-      .iphone-wrap { max-width: 290px; }
-      .iphone-frame { width: 286px; min-height: 540px; padding: 54px 14px 20px; border-radius: 42px; transform: none; }
-      .iphone-screen { min-height: 450px; border-radius: 28px; padding: 12px; }
-      .bubble { font-size: 0.74rem; padding: 10px 12px; }
+      .nav-links.open a { text-align: center; padding: 13px 14px; font-size: 0.92rem; }
+      .nav-cta-link { padding: 13px 14px !important; }
+      #hero { padding: 106px 0 64px; min-height: auto; overflow: hidden; }
+      #hero::before { opacity: 0.72; background: radial-gradient(circle at 50% 16%, rgba(16,179,175,0.18), transparent 58%), radial-gradient(circle at 88% 34%, rgba(240,190,85,0.12), transparent 46%); }
+      #hero::after { min-height: 180px; height: 54vw; }
+      .orbital-ring { display: none; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 34px; align-items: start; }
+      .hero-content { width: 100%; min-width: 0; text-align: left; }
+      .hero-badge { max-width: 100%; padding: 8px 12px; margin-bottom: 20px; font-size: 0.64rem; letter-spacing: 0.12em; }
+      .hero-content h1 { font-size: clamp(2.08rem, 9.18vw, 2.42rem); line-height: 1.04; letter-spacing: -0.06em; max-width: 100%; margin-bottom: 22px; text-wrap: balance; overflow-wrap: normal; word-break: normal; hyphens: none; }
+      .hero-content h1 .hero-line { display: block; }
+      .hero-content h1 em { display: block; margin-top: 4px; }
+      .hero-sub { max-width: 100%; font-size: 0.98rem; line-height: 1.68; margin-bottom: 26px; overflow-wrap: break-word; }
+      .hero-buttons { flex-direction: column; gap: 12px; margin-bottom: 20px; }
+      .hero-proof { align-items: flex-start; gap: 12px; font-size: 0.82rem; line-height: 1.5; }
+      .hero-proof-avatars { padding-top: 2px; }
+      .hero-proof-avatar { width: 30px; height: 30px; font-size: 0.55rem; }
+      .hero-metrics { grid-template-columns: 1fr; gap: 9px; margin-top: 22px; }
+      .hero-metric { padding: 14px; border-radius: 16px; }
+      .hero-visual-stage { min-height: 0; padding-top: 8px; place-items: center; overflow: visible; }
+      .iphone-wrap { width: min(100%, 292px); max-width: 292px; }
+      .iphone-frame { width: 100%; min-height: 505px; padding: 50px 12px 18px; border-radius: 38px; transform: none !important; animation: phoneFloatMobile 7s ease-in-out infinite; }
+      @keyframes phoneFloatMobile { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+      .iphone-frame::before { inset: 10px; border-radius: 31px; }
+      .iphone-frame::after { border-radius: 38px; filter: blur(14px); opacity: 0.44; }
+      .iphone-notch { width: 88px; height: 24px; top: 16px; }
+      .iphone-screen { min-height: 430px; border-radius: 26px; padding: 11px; }
+      .iphone-header { gap: 8px; margin-bottom: 14px; padding-bottom: 12px; }
+      .iphone-avatar-circle { width: 34px; height: 34px; }
+      .iphone-name { font-size: 0.8rem; }
+      .iphone-status { font-size: 0.62rem; }
+      .bubble { font-size: 0.7rem; padding: 9px 11px; max-width: 92%; }
+      .typing-indicator { padding: 12px 14px; }
       .orbit-card { display: none; }
-      h2 { font-size: clamp(2rem, 12vw, 3.4rem); }
-      .problem-img-wrap { min-height: 330px; }
-      .problem-img-stat { flex-direction: column; align-items: flex-start; }
+      h2 { font-size: clamp(2rem, 10.8vw, 3.05rem); line-height: 0.98; letter-spacing: -0.065em; text-wrap: balance; }
+      h3 { font-size: 1.18rem; }
+      .problem-layout, .cs-layout, .faq-layout { gap: 30px; }
+      .visual-frame { border-radius: 24px; padding: 8px; }
+      .problem-img-wrap { min-height: 280px; border-radius: 18px; }
+      .problem-img-wrap img { max-height: 360px; transform: none; }
+      .problem-img-overlay { opacity: 0.62; }
+      .problem-img-stat { left: 10px; right: 10px; bottom: 10px; flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px; border-radius: 16px; }
       .problem-img-stat-label { text-align: left; }
-      .hiw-step { padding: 28px 24px 28px 82px; }
-      .hiw-num { left: 22px; top: 28px; width: 46px; height: 46px; border-radius: 16px; }
-      .hiw-steps::before { left: 45px; }
-      .stats-grid, .pricing-grid { grid-template-columns: 1fr; }
-      .stat-card { min-height: 190px; }
+      .problem-card, .insight-callout { padding: 20px; border-radius: 18px; }
+      .hiw-header { margin-bottom: 38px; }
+      .hiw-steps { gap: 14px; }
+      .hiw-step { padding: 24px 18px 24px 76px; border-radius: 20px; }
+      .hiw-num { left: 18px; top: 24px; width: 44px; height: 44px; border-radius: 15px; font-size: 1rem; }
+      .hiw-steps::before { left: 40px; top: 54px; bottom: 54px; }
+      .hiw-img { margin-top: 34px; }
+      .hiw-img img { border-radius: 16px; }
+      .stats-header, .pricing-header { margin-bottom: 34px; }
+      .stats-grid, .pricing-grid { grid-template-columns: 1fr; gap: 14px; }
+      .stat-card { min-height: 0; padding: 24px 20px; border-radius: 22px; }
+      .stat-number { font-size: clamp(2.55rem, 16vw, 4.2rem); }
+      .price-card { padding: 26px 20px; border-radius: 24px; }
       .price-desc { min-height: 0; }
-      .cs-img-wrap img { min-height: 300px; }
-      .faq-question { padding: 20px; font-size: 0.94rem; }
-      .faq-answer-inner { padding: 0 20px 20px; }
-      .cta-content { padding: 32px 20px; }
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .price-amount span { font-size: clamp(2.45rem, 15vw, 4rem); }
+      .price-feature { align-items: flex-start; }
+      .cs-img-wrap img { min-height: 240px; border-radius: 16px; }
+      .cs-content { padding: 26px 20px; border-radius: 24px; }
+      .keyword-cloud { gap: 7px; }
+      .keyword-cloud span { font-size: 0.64rem; padding: 6px 9px; }
+      .quote { padding: 22px 0 0 18px; }
+      .faq-header h2 { font-size: clamp(2.25rem, 12vw, 3.45rem); line-height: 0.94; letter-spacing: -0.07em; }
+      .faq-question { padding: 19px 18px; font-size: 0.94rem; gap: 14px; }
+      .faq-question::after { flex: 0 0 28px; width: 28px; height: 28px; font-size: 1rem; }
+      .faq-answer-inner { padding: 0 18px 19px; }
+      .cta-card { border-radius: 26px; }
+      .cta-content { padding: 34px 18px; }
+      .cta-visual { opacity: 0.26; width: 72%; right: -34%; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
       .footer-inner > div:last-child { align-items: center !important; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
       .footer-stripe { justify-content: center; }
       .cursor-aura { display: none; }
+    }
+
+    @media (max-width: 374px) {
+      .container { width: calc(100% - 22px); }
+      .nav .container { width: calc(100% - 18px); }
+      .nav-logo { font-size: 0.92rem; }
+      .hero-content h1 { font-size: clamp(1.95rem, 9.05vw, 2.18rem); letter-spacing: -0.052em; line-height: 1.06; }
+      .hero-badge { font-size: 0.58rem; letter-spacing: 0.09em; }
+      .iphone-wrap { max-width: 270px; }
+      .iphone-frame { min-height: 478px; }
+      .iphone-screen { min-height: 405px; }
+      .bubble { font-size: 0.66rem; }
+      .hiw-step { padding-left: 22px; padding-top: 82px; }
+      .hiw-num { left: 20px; top: 22px; }
+      .hiw-steps::before { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -615,7 +687,7 @@
         <div class="hero-grid">
           <div class="hero-content">
             <div class="hero-badge reveal"><span class="hero-badge-dot"></span> ManyChat Automation</div>
-            <h1 id="hero-title" class="reveal reveal-d1">Your followers are commenting. <em>Nobody's answering.</em></h1>
+            <h1 id="hero-title" class="reveal reveal-d1"><span class="hero-line">Your followers</span> <span class="hero-line">are commenting.</span> <em><span class="hero-line">Nobody's</span> <span class="hero-line">answering.</span></em></h1>
             <p class="hero-sub reveal reveal-d2">The DM Engine turns every Instagram comment into an instant conversation. It delivers your lead magnet, answers questions, and books calls on autopilot. Built for coaches and wellness brands who are done losing leads to slow replies.</p>
             <div class="hero-buttons reveal reveal-d3">
               <a href="#pricing" class="btn-primary">See Pricing &amp; Get Started</a>
