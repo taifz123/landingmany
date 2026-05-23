@@ -10,551 +10,589 @@
   <meta property="og:description" content="Done-for-you ManyChat automation that turns Instagram comments into instant DM conversations and booked calls. Built for coaches and wellness brands.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mctoyou.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#07111f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dark: #0F172A;
-      --dark-mid: #1E293B;
-      --dark-card: #172033;
+      --dark: #07111f;
+      --dark-2: #0b1628;
+      --dark-mid: #101d32;
+      --dark-card: #14223a;
+      --dark-card-2: #172842;
       --teal: #0A6B6B;
-      --teal-light: #0D8A8A;
-      --teal-glow: rgba(10, 107, 107, 0.15);
+      --teal-light: #10b3af;
+      --teal-ghost: rgba(16, 179, 175, 0.13);
       --gold: #C8922A;
-      --gold-light: #D4A544;
-      --gold-glow: rgba(200, 146, 42, 0.15);
+      --gold-light: #F0BE55;
+      --gold-ghost: rgba(240, 190, 85, 0.14);
       --white: #F8FAFC;
-      --grey: #94A3B8;
-      --grey-dark: #475569;
+      --grey: #a7b4c8;
+      --grey-dark: #65758f;
+      --line: rgba(248, 250, 252, 0.09);
+      --line-strong: rgba(248, 250, 252, 0.16);
+      --shadow-xl: 0 36px 120px rgba(0, 0, 0, 0.56);
+      --shadow-card: 0 24px 80px rgba(0, 0, 0, 0.38);
       --font-display: 'Syne', sans-serif;
       --font-body: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-elastic: cubic-bezier(0.18, 1.4, 0.28, 1);
+      --section-pad: clamp(88px, 10vw, 150px);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: var(--dark); }
     body {
       font-family: var(--font-body);
-      background: var(--dark);
       color: var(--grey);
+      background:
+        radial-gradient(circle at 18% -10%, rgba(16, 179, 175, 0.16), transparent 32vw),
+        radial-gradient(circle at 82% 0%, rgba(240, 190, 85, 0.13), transparent 28vw),
+        linear-gradient(180deg, #07111f 0%, #0b1424 44%, #07111f 100%);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    h1, h2, h3 { font-family: var(--font-display); color: var(--white); line-height: 1.12; letter-spacing: -0.025em; }
-    h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 16px; }
-    h3 { font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 600; margin-bottom: 8px; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+      background-size: 78px 78px;
+      mask-image: radial-gradient(circle at 50% 12%, black 0%, transparent 78%);
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.45;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.11) 1px, transparent 0);
+      background-size: 28px 28px;
+      mix-blend-mode: screen;
+      mask-image: linear-gradient(180deg, black, transparent 76%);
+    }
+    ::selection { background: rgba(240,190,85,0.32); color: var(--white); }
+    h1, h2, h3 { font-family: var(--font-display); color: var(--white); line-height: 1.03; letter-spacing: -0.055em; }
+    h2 { font-size: clamp(2.25rem, 5.8vw, 5.2rem); font-weight: 800; margin-bottom: 20px; }
+    h3 { font-size: clamp(1.18rem, 2.2vw, 1.55rem); font-weight: 700; margin-bottom: 10px; }
     p { margin-bottom: 16px; }
-    a { color: var(--teal-light); text-decoration: none; transition: color 250ms var(--ease); }
+    a { color: var(--teal-light); text-decoration: none; transition: color 240ms var(--ease), opacity 240ms var(--ease); }
     a:hover { color: var(--gold-light); }
     img { max-width: 100%; height: auto; display: block; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-    /* Buttons */
+    .skip-link {
+      position: fixed; left: 16px; top: 16px; z-index: 1000;
+      transform: translateY(-160%); background: var(--gold-light); color: #06101d;
+      padding: 12px 16px; border-radius: 999px; font-weight: 800;
+      transition: transform 260ms var(--ease);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(100% - 48px, 1200px); margin: 0 auto; }
+    .section-shell { position: relative; isolation: isolate; }
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal-light);
+      margin-bottom: 18px;
+    }
+    .section-eyebrow::before {
+      content: ''; width: 42px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal-light));
+    }
+    .muted { color: var(--grey); }
+    .gold { color: var(--gold-light); }
+
+    .loader {
+      position: fixed; inset: 0; z-index: 999;
+      display: grid; place-items: center;
+      background: #050b14;
+      transition: opacity 650ms var(--ease), visibility 650ms var(--ease);
+    }
+    .loader.hide { opacity: 0; visibility: hidden; }
+    .loader-core {
+      width: 116px; height: 116px; border-radius: 50%; position: relative;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle, rgba(16,179,175,0.16), transparent 62%);
+      box-shadow: 0 0 80px rgba(16,179,175,0.22), inset 0 0 35px rgba(240,190,85,0.09);
+      animation: loaderPulse 1.8s var(--ease) infinite;
+    }
+    .loader-core::before, .loader-core::after {
+      content: ''; position: absolute; inset: 18px; border-radius: 50%;
+      border: 1px solid rgba(240,190,85,0.38); border-top-color: transparent;
+      animation: spin 1.4s linear infinite;
+    }
+    .loader-core::after { inset: 36px; border-color: rgba(16,179,175,0.55); border-right-color: transparent; animation-duration: 1s; animation-direction: reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes loaderPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+    .visual-noise { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0.26; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0); background-size: 32px 32px; mask-image: linear-gradient(180deg, black, transparent 72%); }
+    .ambient-orb { position: fixed; pointer-events: none; z-index: -2; width: 46vw; height: 46vw; min-width: 420px; min-height: 420px; border-radius: 999px; filter: blur(80px); opacity: 0.22; background: radial-gradient(circle, rgba(16,179,175,0.62), rgba(240,190,85,0.18) 38%, transparent 70%); }
+    .ambient-orb.orb-a { left: -12vw; top: 18vh; }
+    .ambient-orb.orb-b { right: -18vw; top: 54vh; background: radial-gradient(circle, rgba(240,190,85,0.46), rgba(16,179,175,0.18) 42%, transparent 70%); }
+    .cursor-aura {
+      position: fixed; width: 360px; height: 360px; border-radius: 50%; pointer-events: none; z-index: 1;
+      background: radial-gradient(circle, rgba(16,179,175,0.13), rgba(240,190,85,0.07) 38%, transparent 70%);
+      transform: translate3d(-50%, -50%, 0); opacity: 0; transition: opacity 300ms var(--ease);
+      mix-blend-mode: screen; filter: blur(10px);
+    }
+
+    .btn-primary, .btn-secondary {
+      position: relative; isolation: isolate; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 54px; border-radius: 999px; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.98rem; font-weight: 800;
+      letter-spacing: -0.01em; transition: transform 320ms var(--ease-elastic), box-shadow 320ms var(--ease), border-color 320ms var(--ease), color 320ms var(--ease), background 320ms var(--ease);
+    }
     .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: var(--font-body); font-weight: 700; font-size: 1rem;
-      color: var(--dark); background: var(--gold);
-      padding: 16px 40px; border-radius: 8px; border: none; cursor: pointer;
-      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), background 300ms var(--ease);
-      min-height: 52px; text-align: center; letter-spacing: 0.01em;
+      color: #07111f; background: linear-gradient(135deg, #ffe09a 0%, var(--gold-light) 42%, #b87817 100%);
+      padding: 16px 34px; border: 1px solid rgba(255, 232, 173, 0.62);
+      box-shadow: 0 20px 70px rgba(200,146,42,0.28), inset 0 1px 0 rgba(255,255,255,0.52);
     }
+    .btn-primary::before, .btn-secondary::before {
+      content: ''; position: absolute; inset: -2px; z-index: -1;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.55) 48%, transparent 70%);
+      transform: translateX(-120%) skewX(-18deg); transition: transform 720ms var(--ease);
+    }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px) scale(1.015); }
     .btn-primary:hover {
-      transform: scale(1.03); background: var(--gold-light);
-      box-shadow: 0 0 40px rgba(200,146,42,0.4), 0 8px 24px rgba(200,146,42,0.25);
-      color: var(--dark);
+      color: #07111f; box-shadow: 0 26px 92px rgba(240,190,85,0.38), 0 0 46px rgba(240,190,85,0.20), inset 0 1px 0 rgba(255,255,255,0.68);
     }
-    .btn-primary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+    .btn-primary:hover::before, .btn-secondary:hover::before { transform: translateX(120%) skewX(-18deg); }
     .btn-secondary {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-      color: var(--white); background: transparent;
-      padding: 14px 32px; border-radius: 8px; border: 1.5px solid rgba(10,107,107,0.5); cursor: pointer;
-      transition: all 300ms var(--ease);
-    }
-    .btn-secondary:hover {
-      background: rgba(10,107,107,0.1); border-color: var(--teal-light);
-      color: var(--white);
-    }
-
-    /* Scroll Animations */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 100ms; }
-    .reveal-d2 { transition-delay: 200ms; }
-    .reveal-d3 { transition-delay: 300ms; }
-    .reveal-d4 { transition-delay: 400ms; }
-
-    /* Nav */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 14px 0;
-      background: rgba(15,23,42,0.8);
+      color: var(--white); background: rgba(255,255,255,0.035);
+      padding: 15px 30px; border: 1px solid rgba(16,179,175,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 18px 60px rgba(0,0,0,0.22);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 400ms var(--ease), background 400ms var(--ease);
     }
-    .nav.scrolled { border-bottom-color: rgba(10,107,107,0.15); background: rgba(15,23,42,0.95); }
-    .nav .container { display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--white); }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--grey); transition: color 250ms var(--ease); }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta-link {
-      font-size: 0.85rem; padding: 10px 24px; border-radius: 6px;
-      background: var(--gold); color: var(--dark); font-weight: 700;
-      transition: background 250ms var(--ease), transform 250ms var(--ease);
-    }
-    .nav-cta-link:hover { background: var(--gold-light); transform: scale(1.02); color: var(--dark); }
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: transform 300ms var(--ease), opacity 200ms; }
+    .btn-secondary:hover { color: var(--white); border-color: rgba(16,179,175,0.78); background: rgba(16,179,175,0.10); box-shadow: 0 22px 80px rgba(16,179,175,0.16); }
+    .btn-primary:focus-visible, .btn-secondary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
 
-    /* Hero */
-    #hero {
-      padding: 160px 0 100px; position: relative; overflow: hidden; background: var(--dark);
+    .reveal { opacity: 0; transform: translateY(42px) scale(0.985); filter: blur(14px); transition: opacity 900ms var(--ease), transform 900ms var(--ease), filter 900ms var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    .reveal-d1 { transition-delay: 100ms; } .reveal-d2 { transition-delay: 200ms; } .reveal-d3 { transition-delay: 300ms; } .reveal-d4 { transition-delay: 400ms; }
+
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 16px 0 0;
+      transition: padding 360ms var(--ease), background 360ms var(--ease), border-color 360ms var(--ease);
     }
+    .nav-progress, .scroll-progress { position: absolute; left: 0; top: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.05); }
+    .nav-progress span, .scroll-progress span { display: block; width: 0%; height: 100%; background: linear-gradient(90deg, var(--teal-light), var(--gold-light)); box-shadow: 0 0 24px rgba(240,190,85,0.45); }
+    .nav .container {
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(7, 17, 31, 0.58);
+      backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: border-color 360ms var(--ease), background 360ms var(--ease), box-shadow 360ms var(--ease);
+    }
+    .nav.scrolled .container { background: rgba(7, 17, 31, 0.84); border-color: rgba(16,179,175,0.20); box-shadow: 0 22px 86px rgba(0,0,0,0.42); }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--white); display: inline-flex; align-items: center; gap: 8px; }
+    .nav-logo::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle, var(--gold-light), var(--teal-light)); box-shadow: 0 0 24px rgba(240,190,85,0.55); }
+    .nav-logo span { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a {
+      font-size: 0.83rem; font-weight: 700; color: rgba(248,250,252,0.68);
+      padding: 10px 13px; border-radius: 999px;
+      transition: color 240ms var(--ease), background 240ms var(--ease), transform 240ms var(--ease);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.055); }
+    .nav-cta-link { background: linear-gradient(135deg, var(--gold-light), var(--gold)) !important; color: #07111f !important; padding: 10px 18px !important; box-shadow: 0 12px 35px rgba(200,146,42,0.22); }
+    .nav-cta-link:hover { transform: translateY(-1px); color: #07111f !important; }
+    .nav-toggle { display: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); cursor: pointer; }
+    .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--white); margin: 5px auto; transition: transform 300ms var(--ease), opacity 200ms; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #hero { min-height: 100svh; padding: clamp(132px, 15vh, 184px) 0 90px; position: relative; overflow: hidden; }
     #hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(10,107,107,0.1) 1px, transparent 0);
-      background-size: 32px 32px; pointer-events: none;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        conic-gradient(from 210deg at 73% 34%, transparent, rgba(16,179,175,0.16), transparent 26%, rgba(240,190,85,0.13), transparent 45%),
+        radial-gradient(circle at 77% 22%, rgba(16,179,175,0.20), transparent 28%),
+        radial-gradient(circle at 12% 78%, rgba(240,190,85,0.12), transparent 27%);
+      opacity: 0.92;
     }
-    .hero-glow {
-      position: absolute; top: -200px; right: -100px; width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(10,107,107,0.1) 0%, transparent 65%);
-      pointer-events: none;
+    #hero::after {
+      content: ''; position: absolute; inset: auto -12vw -18vw -12vw; height: 44vw; min-height: 330px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(16,179,175,0.14), transparent 62%);
+      filter: blur(8px);
     }
-    .hero-glow-gold {
-      position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(200,146,42,0.06) 0%, transparent 65%);
-      pointer-events: none;
+    .orbital-ring {
+      position: absolute; right: min(5vw, 80px); top: 128px; width: min(58vw, 720px); aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; pointer-events: none;
+      transform: rotate(-18deg); opacity: 0.82;
     }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-    .hero-content { position: relative; z-index: 2; }
+    .orbital-ring::before, .orbital-ring::after {
+      content: ''; position: absolute; inset: 13%; border-radius: 50%; border: 1px solid rgba(16,179,175,0.10);
+    }
+    .orbital-ring::after { inset: 27%; border-color: rgba(240,190,85,0.10); }
+    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(320px, 0.84fr); gap: clamp(40px, 5.6vw, 76px); align-items: center; }
+    .hero-content { position: relative; }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--teal-light); border: 1px solid rgba(10,107,107,0.35);
-      padding: 7px 16px; border-radius: 100px; margin-bottom: 28px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--teal-light); border: 1px solid rgba(16,179,175,0.28);
+      padding: 9px 16px; border-radius: 999px; margin-bottom: 26px;
+      background: linear-gradient(135deg, rgba(16,179,175,0.10), rgba(255,255,255,0.025));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 14px 50px rgba(16,179,175,0.10);
     }
-    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hero-content h1 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); font-weight: 800; margin-bottom: 22px; max-width: 580px; }
-    .hero-content h1 em { color: var(--gold); font-style: normal; }
-    .hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--grey); max-width: 480px; margin-bottom: 36px; line-height: 1.75; }
-    .hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+    .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-light); box-shadow: 0 0 0 0 rgba(16,179,175,0.7); animation: pulse 2.15s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16,179,175,0.55); } 70% { box-shadow: 0 0 0 11px rgba(16,179,175,0); } 100% { box-shadow: 0 0 0 0 rgba(16,179,175,0); } }
+    .hero-content h1 { font-size: clamp(3.15rem, 5.85vw, 5.55rem); font-weight: 800; max-width: 720px; margin-bottom: 26px; text-wrap: balance; overflow-wrap: normal; }
+    .hero-content h1 em {
+      display: inline; font-style: normal; color: transparent;
+      background: linear-gradient(100deg, #fff3c4 0%, var(--gold-light) 36%, #b87416 72%, #fff3c4 100%);
+      background-size: 230% 100%; -webkit-background-clip: text; background-clip: text;
+      animation: goldSweep 7s linear infinite;
+      text-shadow: 0 0 50px rgba(240,190,85,0.12);
+    }
+    @keyframes goldSweep { 0% { background-position: 0% 50%; } 100% { background-position: 230% 50%; } }
+    .hero-sub { font-size: clamp(1.04rem, 1.8vw, 1.25rem); color: rgba(207,217,230,0.86); max-width: 640px; margin-bottom: 34px; line-height: 1.82; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 26px; }
     .hero-proof {
-      font-size: 0.82rem; color: var(--grey-dark); display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 14px; max-width: 720px;
+      font-size: 0.88rem; color: rgba(167,180,200,0.78);
+      padding: 12px 0;
     }
-    .hero-proof-avatars { display: flex; }
+    .hero-proof-avatars { display: flex; flex-shrink: 0; }
     .hero-proof-avatar {
-      width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--dark);
-      margin-left: -8px; object-fit: cover;
+      width: 34px; height: 34px; border-radius: 50%; border: 2px solid #07111f;
+      margin-left: -9px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; font-weight: 800; font-family: var(--font-display); box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
     .hero-proof-avatar:first-child { margin-left: 0; }
+    .hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 32px; max-width: 650px; }
+    .hero-metric {
+      padding: 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+    }
+    .hero-metric strong { display: block; font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.65rem); color: var(--white); line-height: 1.1; }
+    .hero-metric span { display: block; margin-top: 4px; font-size: 0.74rem; color: var(--grey-dark); }
 
-    /* iPhone Mock */
-    .iphone-wrap { position: relative; z-index: 2; max-width: 320px; margin: 0 auto; }
+    .iphone-wrap { position: relative; z-index: 2; max-width: 390px; margin: 0 auto; perspective: 1200px; }
+    .hero-visual-stage { position: relative; min-height: 640px; display: grid; place-items: center end; }
     .iphone-frame {
-      background: linear-gradient(145deg, #1a1a2e, #151528);
-      border-radius: 40px; border: 3px solid #2a2a4a;
-      padding: 52px 18px 28px; position: relative;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05), 0 0 60px rgba(10,107,107,0.08);
+      position: relative; width: min(100%, 342px); min-height: 612px;
+      padding: 62px 18px 26px; border-radius: 50px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.13), transparent 16%),
+        linear-gradient(155deg, #10111f, #050916 58%, #18263d);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 48px 140px rgba(0,0,0,0.72), 0 0 90px rgba(16,179,175,0.15), inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(0,0,0,0.7);
+      transform: rotateY(-7deg) rotateX(4deg); transform-style: preserve-3d;
+      animation: phoneFloat 7s ease-in-out infinite;
     }
-    .iphone-notch {
-      position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-      width: 90px; height: 26px; background: #0d0d1a; border-radius: 14px;
-    }
-    .iphone-header { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 16px; }
-    .iphone-avatar-circle {
-      width: 34px; height: 34px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
-    }
-    .iphone-avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .iphone-name { font-size: 0.82rem; font-weight: 600; color: var(--white); }
-    .iphone-status { font-size: 0.65rem; color: var(--teal-light); }
-    .chat-bubbles { display: flex; flex-direction: column; gap: 10px; }
-    .bubble { padding: 11px 15px; font-size: 0.8rem; line-height: 1.45; max-width: 85%; animation: bubbleIn 400ms var(--ease) both; }
-    .bubble-user { background: var(--grey-dark); color: var(--white); border-radius: 16px 16px 4px 16px; align-self: flex-end; }
-    .bubble-brand { background: var(--teal); color: var(--white); border-radius: 16px 16px 16px 4px; align-self: flex-start; }
-    .bubble-link { background: rgba(10,107,107,0.6); }
-    .bubble:nth-child(1) { animation-delay: 0s; } .bubble:nth-child(2) { animation-delay: 0.3s; }
-    .bubble:nth-child(3) { animation-delay: 0.6s; } .bubble:nth-child(4) { animation-delay: 0.9s; }
-    .bubble:nth-child(5) { animation-delay: 1.2s; }
-    .typing-indicator { align-self: flex-start; display: flex; gap: 4px; padding: 13px 17px; background: var(--teal); border-radius: 16px 16px 16px 4px; animation: bubbleIn 400ms var(--ease) 1.5s both; }
-    .typing-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(248,250,252,0.6); animation: bounce 1.4s ease-in-out infinite; }
+    @keyframes phoneFloat { 0%,100% { transform: rotateY(-7deg) rotateX(4deg) translateY(0); } 50% { transform: rotateY(-3deg) rotateX(7deg) translateY(-16px); } }
+    .iphone-frame::before { content: ''; position: absolute; inset: 12px; border-radius: 42px; border: 1px solid rgba(255,255,255,0.06); pointer-events: none; }
+    .iphone-frame::after { content: ''; position: absolute; inset: -1px; border-radius: 50px; background: linear-gradient(135deg, rgba(16,179,175,0.42), transparent 22%, transparent 70%, rgba(240,190,85,0.46)); z-index: -1; filter: blur(18px); opacity: 0.55; }
+    .iphone-notch { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 104px; height: 28px; border-radius: 999px; background: #030712; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
+    .iphone-screen { position: relative; overflow: hidden; border-radius: 32px; padding: 14px; background: linear-gradient(180deg, rgba(7,17,31,0.95), rgba(14,29,50,0.94)); border: 1px solid rgba(255,255,255,0.07); min-height: 500px; }
+    .iphone-screen::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.065) 1px, transparent 0); background-size: 18px 18px; mask-image: linear-gradient(180deg, black, transparent 82%); }
+    .iphone-header { position: relative; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 0 0 14px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 18px; }
+    .iphone-avatar-circle { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.72rem;font-weight:800;color:var(--white); background: linear-gradient(135deg, var(--teal), var(--teal-light)); box-shadow: 0 0 22px rgba(16,179,175,0.24); }
+    .iphone-name { font-size: 0.88rem; font-weight: 800; color: var(--white); }
+    .iphone-status { display: flex; align-items: center; gap: 6px; font-size: 0.67rem; color: var(--teal-light); }
+    .iphone-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); box-shadow: 0 0 15px var(--teal-light); }
+    .chat-bubbles { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 11px; }
+    .bubble { padding: 12px 15px; font-size: 0.8rem; line-height: 1.45; max-width: 88%; animation: bubbleIn 620ms var(--ease) both; box-shadow: 0 10px 28px rgba(0,0,0,0.22); }
+    .bubble-user { background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.07)); color: var(--white); border-radius: 18px 18px 5px 18px; align-self: flex-end; border: 1px solid rgba(255,255,255,0.09); }
+    .bubble-brand { background: linear-gradient(135deg, rgba(10,107,107,0.96), rgba(16,179,175,0.72)); color: var(--white); border-radius: 18px 18px 18px 5px; align-self: flex-start; border: 1px solid rgba(255,255,255,0.09); }
+    .bubble-link { background: linear-gradient(135deg, rgba(240,190,85,0.94), rgba(200,146,42,0.78)); color: #07111f; font-weight: 800; }
+    .bubble:nth-child(1) { animation-delay: 0.1s; } .bubble:nth-child(2) { animation-delay: 0.38s; } .bubble:nth-child(3) { animation-delay: 0.66s; } .bubble:nth-child(4) { animation-delay: 0.94s; } .bubble:nth-child(5) { animation-delay: 1.22s; }
+    .typing-indicator { align-self: flex-start; display: flex; gap: 5px; padding: 14px 17px; background: linear-gradient(135deg, rgba(10,107,107,0.94), rgba(16,179,175,0.72)); border-radius: 18px 18px 18px 5px; animation: bubbleIn 600ms var(--ease) 1.5s both; }
+    .typing-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(248,250,252,0.76); animation: bounce 1.4s ease-in-out infinite; }
     .typing-dot:nth-child(2) { animation-delay: 0.2s; } .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bubbleIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
+    @keyframes bubbleIn { from { opacity: 0; transform: translateY(14px) scale(0.94); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+    @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
+    .orbit-card {
+      position: absolute; z-index: 3; min-width: 172px; padding: 14px 16px; border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10); background: rgba(8,18,32,0.72);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: var(--shadow-card);
+      animation: microFloat 5.5s ease-in-out infinite;
+    }
+    .orbit-card strong { display: block; color: var(--white); font-family: var(--font-display); letter-spacing: -0.03em; }
+    .orbit-card span { display: block; font-size: 0.72rem; color: var(--grey-dark); margin-top: 2px; }
+    .orbit-card.one { top: 8%; right: -10%; }
+    .orbit-card.two { bottom: 12%; left: -16%; animation-delay: -1.4s; }
+    .orbit-card.three { right: -18%; bottom: 31%; animation-delay: -2.2s; }
+    @keyframes microFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-    /* Problem */
-    #problem { padding: 120px 0; background: var(--dark-mid); position: relative; }
-    #problem::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(10,107,107,0.25), transparent);
+    #problem, #stats, #pricing { background: linear-gradient(180deg, rgba(16,29,50,0.82), rgba(7,17,31,0.94)); }
+    #problem { padding: var(--section-pad) 0; position: relative; overflow: hidden; }
+    #problem::before, #problem::after, #stats::before, #pricing::before, #faq::before { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(16,179,175,0.34), rgba(240,190,85,0.22), transparent); }
+    #problem::before, #stats::before, #pricing::before, #faq::before { top: 0; } #problem::after { bottom: 0; }
+    .problem-layout { display: grid; grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr); gap: clamp(42px, 7vw, 96px); align-items: center; }
+    .visual-frame {
+      position: relative; border-radius: var(--radius-xl); padding: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.10); box-shadow: var(--shadow-xl);
     }
-    #problem::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(10,107,107,0.25), transparent);
-    }
-    .problem-layout { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-    .problem-img-wrap {
-      position: relative; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    .problem-img-wrap img { width: 100%; height: auto; max-height: 420px; object-fit: contain; }
-    .problem-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(15,23,42,0.5) 0%, transparent 60%);
-    }
+    .visual-frame::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; background: linear-gradient(135deg, rgba(16,179,175,0.45), transparent 35%, rgba(240,190,85,0.35)); opacity: 0.35; z-index: -1; filter: blur(18px); }
+    .problem-img-wrap { position: relative; border-radius: 26px; overflow: hidden; min-height: 420px; background: #f4f0eb; display: grid; place-items: center; }
+    .problem-img-wrap img { width: 100%; height: 100%; max-height: 520px; object-fit: contain; transform: scale(1.02); transition: transform 900ms var(--ease); }
+    .problem-img-wrap:hover img { transform: scale(1.055); }
+    .problem-img-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7,17,31,0.70), transparent 42%, rgba(240,190,85,0.12)); mix-blend-mode: multiply; }
     .problem-img-stat {
-      position: absolute; bottom: 20px; left: 20px; background: rgba(15,23,42,0.9);
-      backdrop-filter: blur(8px); padding: 16px 20px; border-radius: 10px;
-      border: 1px solid rgba(200,146,42,0.2);
+      position: absolute; bottom: 18px; left: 18px; right: 18px;
+      background: rgba(7,17,31,0.76); backdrop-filter: blur(16px); padding: 18px 20px; border-radius: 18px;
+      border: 1px solid rgba(240,190,85,0.24); display: flex; align-items: end; justify-content: space-between; gap: 16px;
     }
-    .problem-img-stat-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--gold); }
-    .problem-img-stat-label { font-size: 0.75rem; color: var(--grey); }
-    .problem-cards { display: grid; gap: 20px; }
+    .problem-img-stat-num { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 0.9; font-weight: 800; color: var(--gold-light); }
+    .problem-img-stat-label { font-size: 0.76rem; color: rgba(248,250,252,0.76); text-align: right; }
+    .problem-copy h2 { max-width: 760px; }
+    .problem-cards { display: grid; gap: 16px; margin-top: 28px; }
     .problem-card {
-      padding: 24px 24px 24px 22px; background: rgba(15,23,42,0.5);
-      border-radius: 10px; border-left: 3px solid var(--teal);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+      position: relative; padding: 24px 24px 24px 26px; background: linear-gradient(145deg, rgba(255,255,255,0.064), rgba(255,255,255,0.024));
+      border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.22); overflow: hidden;
+      transition: transform 330ms var(--ease), border-color 330ms var(--ease), background 330ms var(--ease);
     }
-    .problem-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
-    .problem-card p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+    .problem-card::before { content: ''; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 10px; background: linear-gradient(180deg, var(--teal-light), var(--gold-light)); }
+    .problem-card:hover { transform: translateX(8px); border-color: rgba(16,179,175,0.24); background: linear-gradient(145deg, rgba(16,179,175,0.10), rgba(255,255,255,0.025)); }
+    .problem-card p { margin: 0; color: rgba(226,232,240,0.86); }
+    .insight-callout {
+      margin-top: 24px; padding: 24px; border-radius: 24px;
+      background: radial-gradient(circle at 20% 0%, rgba(240,190,85,0.13), transparent 38%), rgba(16,179,175,0.07);
+      border: 1px solid rgba(16,179,175,0.22); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .insight-callout p { margin: 0; color: rgba(226,232,240,0.9); }
 
-    /* How it Works */
-    #how-it-works { padding: 120px 0; background: var(--dark); position: relative; overflow: hidden; }
-    .hiw-glow {
-      position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(10,107,107,0.06) 0%, transparent 70%); pointer-events: none;
+    #how-it-works { padding: var(--section-pad) 0; background: var(--dark); position: relative; overflow: hidden; }
+    .hiw-glow { position: absolute; inset: auto 0 -200px 0; height: 420px; background: radial-gradient(ellipse at center, rgba(16,179,175,0.12), transparent 64%); pointer-events: none; }
+    .hiw-header { text-align: center; max-width: 780px; margin: 0 auto 70px; }
+    .hiw-header .section-eyebrow { justify-content: center; }
+    .hiw-header .section-eyebrow::after { content: ''; width: 42px; height: 1px; background: linear-gradient(90deg, var(--teal-light), transparent); }
+    .hiw-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; position: relative; }
+    .hiw-steps::before { content: ''; position: absolute; left: 8%; right: 8%; top: 48px; height: 1px; background: linear-gradient(90deg, transparent, rgba(16,179,175,0.5), rgba(240,190,85,0.48), transparent); }
+    .hiw-step {
+      position: relative; min-height: 300px; padding: 34px; border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, rgba(255,255,255,0.065), rgba(255,255,255,0.022));
+      border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow-card); overflow: hidden;
+      transition: transform 380ms var(--ease), border-color 380ms var(--ease), box-shadow 380ms var(--ease);
     }
-    .hiw-header { text-align: center; max-width: 520px; margin: 0 auto 60px; }
-    .hiw-steps { display: grid; gap: 40px; position: relative; }
-    .hiw-steps::before {
-      content: ''; position: absolute; left: 24px; top: 56px; bottom: 56px;
-      width: 2px; background: linear-gradient(to bottom, var(--teal), var(--gold)); border-radius: 1px;
-    }
-    .hiw-step { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start; position: relative; }
+    .hiw-step::after { content: ''; position: absolute; inset: auto -20% -42% -20%; height: 62%; background: radial-gradient(ellipse, rgba(16,179,175,0.13), transparent 70%); transition: opacity 300ms var(--ease); }
+    .hiw-step:hover { transform: translateY(-10px); border-color: rgba(16,179,175,0.25); box-shadow: 0 34px 100px rgba(0,0,0,0.44); }
     .hiw-num {
-      width: 48px; height: 48px; border-radius: 50%; background: var(--dark-mid);
-      border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
-      color: var(--teal-light); position: relative; z-index: 2;
-      box-shadow: 0 0 24px rgba(10,107,107,0.15);
+      width: 62px; height: 62px; border-radius: 22px; margin-bottom: 34px;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.26), transparent 28%), linear-gradient(135deg, var(--teal), var(--teal-light));
+      display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--white);
+      box-shadow: 0 18px 52px rgba(16,179,175,0.25), inset 0 1px 0 rgba(255,255,255,0.22);
     }
-    .hiw-keyword {
-      display: inline-block; background: rgba(10,107,107,0.12); color: var(--teal-light);
-      font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 4px;
-      margin-top: 8px; letter-spacing: 0.04em;
-    }
-    .hiw-img {
-      margin-top: 48px; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
-    }
-    .hiw-img img { width: 100%; height: auto; object-fit: contain; }
+    .hiw-step h3, .hiw-step p, .hiw-keyword { position: relative; z-index: 2; }
+    .hiw-keyword { display: inline-flex; margin-top: 12px; font-family: var(--font-mono); background: rgba(16,179,175,0.12); color: var(--teal-light); font-size: 0.72rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; letter-spacing: 0.04em; border: 1px solid rgba(16,179,175,0.20); }
+    .hiw-img { margin-top: 58px; }
+    .hiw-img .visual-frame { padding: 10px; }
+    .hiw-img img { width: 100%; height: auto; border-radius: 22px; object-fit: cover; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
 
-    /* Stats */
-    #stats { padding: 100px 0; background: var(--dark-mid); position: relative; }
-    #stats::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200,146,42,0.2), transparent);
-    }
-    .stats-header { text-align: center; max-width: 560px; margin: 0 auto 48px; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    #stats { padding: var(--section-pad) 0; position: relative; overflow: hidden; }
+    .stats-header { text-align: center; max-width: 860px; margin: 0 auto 56px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
     .stat-card {
-      padding: 32px 24px; background: rgba(15,23,42,0.6); border-radius: 12px;
-      text-align: center; border-top: 3px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: relative; overflow: hidden;
+      position: relative; min-height: 230px; padding: 30px 22px; border-radius: 28px; text-align: left;
+      background: linear-gradient(165deg, rgba(255,255,255,0.076), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow-card); overflow: hidden;
+      transition: transform 380ms var(--ease), border-color 380ms var(--ease);
     }
-    .stat-card::after {
-      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 60px; background: radial-gradient(ellipse, rgba(200,146,42,0.08) 0%, transparent 70%); pointer-events: none;
-    }
-    .stat-number { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 8px; }
-    .stat-label { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-    .stat-compare { font-size: 0.78rem; color: var(--grey-dark); }
-    .stats-source { text-align: center; margin-top: 28px; font-size: 0.72rem; color: var(--grey-dark); font-style: italic; }
+    .stat-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(240,190,85,0.18), transparent 44%); opacity: 0.78; }
+    .stat-card::after { content: ''; position: absolute; left: 22px; right: 22px; bottom: 22px; height: 1px; background: linear-gradient(90deg, var(--gold-light), transparent); opacity: 0.6; }
+    .stat-card:hover { transform: translateY(-10px); border-color: rgba(240,190,85,0.25); }
+    .stat-number { position: relative; z-index: 2; font-family: var(--font-display); font-size: clamp(2.35rem, 4vw, 3.45rem); font-weight: 800; color: transparent; background: linear-gradient(135deg, #fff5cb, var(--gold-light) 48%, #a76812); -webkit-background-clip: text; background-clip: text; line-height: 0.9; margin-bottom: 20px; letter-spacing: -0.06em; }
+    .stat-label { position: relative; z-index: 2; font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .stat-compare { position: relative; z-index: 2; font-size: 0.8rem; color: var(--grey-dark); line-height: 1.5; }
+    .stats-source { text-align: center; margin-top: 30px; font-size: 0.74rem; color: var(--grey-dark); font-style: italic; }
 
-    /* Case Study */
-    #case-study { padding: 120px 0; background: var(--dark); position: relative; overflow: hidden; }
-    .cs-glow {
-      position: absolute; top: 50%; left: -100px; width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(10,107,107,0.06) 0%, transparent 70%);
-      transform: translateY(-50%); pointer-events: none;
-    }
-    .cs-layout { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-    .cs-img-wrap { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
-    .cs-img-wrap img { width: 100%; height: auto; object-fit: contain; }
-    .cs-img-badge {
-      position: absolute; top: 16px; left: 16px;
-      background: rgba(15,23,42,0.9); backdrop-filter: blur(8px);
-      padding: 8px 14px; border-radius: 6px; font-size: 0.7rem;
-      font-weight: 600; color: var(--teal-light); text-transform: uppercase; letter-spacing: 0.08em;
-      border: 1px solid rgba(10,107,107,0.2);
-    }
-    .cs-card {
-      background: var(--dark-mid); border-radius: 12px; padding: 40px 32px;
-      border: 1px solid rgba(10,107,107,0.12);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .cs-card::before {
-      content: ''; position: absolute; top: -1px; left: 40px; right: 40px;
-      height: 3px; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 0 0 2px 2px;
-    }
-    .cs-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal-light); font-weight: 600; margin-bottom: 12px; }
-    .cs-card h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 20px; }
-    .cs-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 24px; }
-    .cs-tag {
-      font-size: 0.7rem; font-weight: 600; padding: 5px 12px;
-      background: rgba(10,107,107,0.12); color: var(--teal-light);
-      border-radius: 4px; letter-spacing: 0.05em;
-    }
-    .cs-outcome { font-size: 0.95rem; line-height: 1.75; margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--teal); }
-    .cs-quote { font-style: italic; color: var(--white); font-size: 1.05rem; line-height: 1.6; position: relative; padding-left: 22px; }
-    .cs-quote::before { content: '\201C'; position: absolute; left: 0; top: -4px; font-size: 1.8rem; color: var(--gold); font-style: normal; font-family: var(--font-display); }
-    .cs-quote-attr { margin-top: 8px; font-size: 0.8rem; color: var(--grey-dark); font-style: normal; }
+    #case-study { padding: var(--section-pad) 0; background: var(--dark); position: relative; overflow: hidden; }
+    .cs-glow { position: absolute; top: 46%; left: -180px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(16,179,175,0.12), transparent 68%); transform: translateY(-50%); pointer-events: none; }
+    .cs-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr); gap: clamp(34px, 6vw, 76px); align-items: center; }
+    .cs-img-wrap { position: relative; border-radius: 28px; overflow: hidden; background: #f7f8fa; }
+    .cs-img-wrap img { width: 100%; height: 100%; object-fit: contain; min-height: 420px; transition: transform 900ms var(--ease); }
+    .cs-img-wrap:hover img { transform: scale(1.045); }
+    .cs-img-badge { position: absolute; top: 18px; left: 18px; background: rgba(7,17,31,0.78); backdrop-filter: blur(14px); padding: 10px 15px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.67rem; font-weight: 700; color: var(--teal-light); text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid rgba(16,179,175,0.22); }
+    .cs-card { position: relative; background: linear-gradient(155deg, rgba(255,255,255,0.074), rgba(255,255,255,0.022)); border-radius: var(--radius-xl); padding: clamp(34px, 5vw, 54px); border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow-xl); overflow: hidden; }
+    .cs-card::before { content: ''; position: absolute; top: 0; left: 34px; right: 34px; height: 3px; background: linear-gradient(90deg, var(--teal-light), var(--gold-light)); border-radius: 0 0 6px 6px; }
+    .cs-card::after { content: ''; position: absolute; right: -32%; bottom: -36%; width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(240,190,85,0.10), transparent 70%); }
+    .cs-eyebrow { position: relative; z-index: 2; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal-light); font-weight: 700; margin-bottom: 14px; }
+    .cs-card h2 { position: relative; z-index: 2; font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px; }
+    .cs-card p { position: relative; z-index: 2; }
+    .cs-tags { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 26px; }
+    .cs-tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 7px 11px; background: rgba(16,179,175,0.12); color: var(--teal-light); border-radius: 999px; letter-spacing: 0.05em; border: 1px solid rgba(16,179,175,0.18); }
+    .cs-outcome { position: relative; z-index: 2; font-size: 0.98rem; line-height: 1.82; margin-bottom: 26px; padding-left: 18px; border-left: 2px solid var(--teal-light); color: rgba(226,232,240,0.86); }
+    .cs-quote { position: relative; z-index: 2; font-style: italic; color: var(--white); font-size: clamp(1.05rem, 2vw, 1.24rem); line-height: 1.62; padding-left: 30px; }
+    .cs-quote::before { content: '\201C'; position: absolute; left: 0; top: -8px; font-size: 2.4rem; color: var(--gold-light); font-style: normal; font-family: var(--font-display); }
+    .cs-quote-attr { margin-top: 10px; font-size: 0.82rem; color: var(--grey-dark); font-style: normal; }
 
-    /* Pricing */
-    #pricing {
-      padding: 120px 0; background: var(--dark-mid); position: relative; overflow: hidden;
-    }
-    #pricing::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(10,107,107,0.05) 1px, transparent 0);
-      background-size: 40px 40px; pointer-events: none;
-    }
-    .pricing-header { text-align: center; max-width: 560px; margin: 0 auto 56px; }
-    .pricing-grid {
-      display: grid; grid-template-columns: 1fr; gap: 24px;
-      max-width: 960px; margin: 0 auto; align-items: stretch;
-    }
+    #pricing { padding: var(--section-pad) 0; position: relative; overflow: hidden; }
+    #pricing::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 1px 1px, rgba(16,179,175,0.075) 1px, transparent 0); background-size: 42px 42px; mask-image: radial-gradient(circle at 50% 25%, black, transparent 72%); }
+    .pricing-header { text-align: center; max-width: 860px; margin: 0 auto 62px; position: relative; z-index: 2; }
+    .pricing-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 1120px; margin: 0 auto; align-items: stretch; }
     .price-card {
-      background: var(--dark-card); border-radius: 12px; padding: 36px 28px;
-      border: 1px solid rgba(255,255,255,0.06); position: relative;
-      display: flex; flex-direction: column;
-      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), border-color 300ms var(--ease);
+      position: relative; display: flex; flex-direction: column; padding: 34px 26px;
+      border-radius: 30px; background: linear-gradient(160deg, rgba(255,255,255,0.074), rgba(255,255,255,0.026));
+      border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow-card); overflow: hidden;
+      transition: transform 420ms var(--ease), border-color 420ms var(--ease), box-shadow 420ms var(--ease);
     }
-    .price-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
-    .price-card.featured {
-      border: 2px solid var(--gold);
-      box-shadow: 0 0 40px rgba(200,146,42,0.1), 0 8px 32px rgba(0,0,0,0.2);
-    }
-    .price-card.featured::after {
-      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 200px; height: 100px;
-      background: radial-gradient(ellipse, rgba(200,146,42,0.08) 0%, transparent 70%); pointer-events: none;
-    }
-    .price-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--gold); color: var(--dark); font-size: 0.7rem; font-weight: 700;
-      padding: 5px 16px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em;
-      white-space: nowrap;
-    }
-    .price-tier { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal-light); font-weight: 600; margin-bottom: 8px; }
-    .price-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-    .price-amount { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
-    .price-amount span { color: var(--gold); }
-    .price-desc { font-size: 0.85rem; color: var(--grey-dark); margin-bottom: 28px; }
+    .price-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(16,179,175,0.13), transparent 46%); opacity: 0.9; }
+    .price-card:hover { transform: translateY(-12px); border-color: rgba(16,179,175,0.25); box-shadow: 0 38px 110px rgba(0,0,0,0.48); }
+    .price-card.featured { transform: translateY(-18px); border: 1px solid rgba(240,190,85,0.48); background: linear-gradient(160deg, rgba(240,190,85,0.12), rgba(255,255,255,0.032)); box-shadow: 0 0 0 1px rgba(240,190,85,0.18), 0 42px 130px rgba(0,0,0,0.52), 0 0 90px rgba(240,190,85,0.10); }
+    .price-card.featured:hover { transform: translateY(-26px); }
+    .price-card.featured::before { background: radial-gradient(circle at 50% 0%, rgba(240,190,85,0.22), transparent 50%); }
+    .price-badge { position: absolute; top: 18px; right: 18px; z-index: 3; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #07111f; font-family: var(--font-mono); font-size: 0.63rem; font-weight: 800; padding: 7px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 14px 38px rgba(200,146,42,0.24); }
+    .price-tier, .price-name, .price-amount, .price-desc, .price-features, .price-card .btn-primary, .price-card .btn-secondary { position: relative; z-index: 2; }
+    .price-tier { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal-light); font-weight: 700; margin-bottom: 12px; }
+    .price-name { font-family: var(--font-display); font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 14px; letter-spacing: -0.05em; }
+    .price-amount { font-family: var(--font-display); font-size: clamp(2.7rem, 5vw, 4rem); font-weight: 800; color: var(--white); margin-bottom: 8px; line-height: 0.95; letter-spacing: -0.07em; }
+    .price-amount span { color: var(--gold-light); }
+    .price-desc { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 30px; min-height: 66px; }
     .price-features { list-style: none; display: grid; gap: 14px; margin-bottom: 32px; flex-grow: 1; }
-    .price-feature {
-      display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; line-height: 1.5;
-    }
-    .price-check {
-      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(10,107,107,0.15); display: flex; align-items: center; justify-content: center; margin-top: 2px;
-    }
-    .price-check svg { width: 11px; height: 11px; }
-    .price-card .btn-primary { width: 100%; }
-    .price-card .btn-secondary { width: 100%; }
-    .pricing-guarantee {
-      text-align: center; margin-top: 40px; font-size: 0.85rem; color: var(--grey-dark);
-    }
-    .pricing-guarantee svg { display: inline-block; vertical-align: middle; margin-right: 6px; }
+    .price-feature { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; line-height: 1.48; color: rgba(226,232,240,0.86); }
+    .price-check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(16,179,175,0.14); display: flex; align-items: center; justify-content: center; margin-top: 1px; border: 1px solid rgba(16,179,175,0.18); }
+    .price-check svg { width: 12px; height: 12px; }
+    .price-card .btn-primary, .price-card .btn-secondary { width: 100%; margin-top: auto; }
+    .pricing-guarantee { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; gap: 9px; text-align: center; margin-top: 46px; font-size: 0.86rem; color: var(--grey-dark); }
+    .pricing-guarantee svg { flex-shrink: 0; }
 
-    /* FAQ */
-    #faq { padding: 120px 0; background: var(--dark); position: relative; }
-    .faq-layout { display: grid; grid-template-columns: 1fr; gap: 40px; }
-    .faq-header h2 { margin-bottom: 12px; }
-    .faq-list { display: grid; gap: 10px; }
-    .faq-item {
-      background: var(--dark-mid); border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.04); overflow: hidden;
-      transition: border-color 300ms var(--ease);
-    }
-    .faq-item:hover { border-color: rgba(10,107,107,0.15); }
-    .faq-question {
-      width: 100%; display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 24px; background: none; border: none; cursor: pointer;
-      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
-      color: var(--white); text-align: left; gap: 16px; line-height: 1.4;
-    }
-    .faq-question:focus-visible { outline: 2px solid var(--teal-light); outline-offset: -2px; border-radius: 10px; }
-    .faq-icon {
-      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(10,107,107,0.12); display: flex; align-items: center; justify-content: center;
-      transition: transform 300ms var(--ease), background 300ms var(--ease);
-    }
-    .faq-icon svg { width: 12px; height: 12px; stroke: var(--teal-light); transition: transform 300ms var(--ease); }
-    .faq-question[aria-expanded="true"] .faq-icon { background: rgba(10,107,107,0.25); }
-    .faq-question[aria-expanded="true"] .faq-icon svg { transform: rotate(180deg); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 400ms var(--ease); }
-    .faq-answer-inner { padding: 0 24px 20px; font-size: 0.9rem; line-height: 1.7; }
+    #faq { padding: var(--section-pad) 0; background: var(--dark); position: relative; }
+    .faq-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(34px, 5vw, 54px); align-items: start; max-width: 980px; margin: 0 auto; }
+    .faq-header { position: relative; top: auto; max-width: 860px; margin: 0 auto; text-align: center; }
+    .faq-header h2 { margin-bottom: 14px; font-size: clamp(3.2rem, 7.2vw, 6.65rem); line-height: 0.88; letter-spacing: -0.085em; text-wrap: balance; }
+    .faq-header p { max-width: 520px; margin: 0 auto; }
+    .faq-list { display: grid; gap: 12px; }
+    .faq-item { background: linear-gradient(145deg, rgba(255,255,255,0.064), rgba(255,255,255,0.024)); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: border-color 300ms var(--ease), transform 300ms var(--ease), background 300ms var(--ease); box-shadow: 0 18px 62px rgba(0,0,0,0.22); }
+    .faq-item:hover { border-color: rgba(16,179,175,0.25); transform: translateX(4px); background: linear-gradient(145deg, rgba(16,179,175,0.09), rgba(255,255,255,0.024)); }
+    .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 23px 24px; background: none; border: none; cursor: pointer; font-family: var(--font-body); font-size: 1rem; font-weight: 800; color: var(--white); text-align: left; gap: 18px; line-height: 1.35; }
+    .faq-question:focus-visible { outline: 2px solid var(--teal-light); outline-offset: -4px; border-radius: 20px; }
+    .faq-icon { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(16,179,175,0.12); display: flex; align-items: center; justify-content: center; transition: transform 300ms var(--ease), background 300ms var(--ease); border: 1px solid rgba(16,179,175,0.18); }
+    .faq-icon svg { width: 14px; height: 14px; stroke: var(--teal-light); transition: transform 300ms var(--ease); }
+    .faq-question[aria-expanded="true"] .faq-icon { background: rgba(240,190,85,0.14); border-color: rgba(240,190,85,0.26); }
+    .faq-question[aria-expanded="true"] .faq-icon svg { transform: rotate(180deg); stroke: var(--gold-light); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 430ms var(--ease); }
+    .faq-answer-inner { padding: 0 24px 24px; font-size: 0.94rem; line-height: 1.78; color: rgba(207,217,230,0.82); }
     .faq-answer-inner p { margin: 0; }
 
-    /* Final CTA */
-    #cta {
-      padding: 120px 0; position: relative; text-align: center; overflow: hidden;
-    }
-    .cta-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
-    .cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.12) saturate(0.3); }
-    .cta-bg-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, var(--dark) 0%, rgba(15,23,42,0.6) 40%, var(--dark) 100%); }
-    .cta-content { max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
-    .cta-content h2 { margin-bottom: 16px; font-size: clamp(2rem, 4.5vw, 3rem); }
+    #cta { padding: clamp(110px, 12vw, 176px) 0; position: relative; text-align: center; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; z-index: 0; }
+    .cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.18) saturate(0.42) contrast(1.08); transform: scale(1.03); }
+    .cta-bg-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, rgba(16,179,175,0.16), transparent 42%), linear-gradient(180deg, var(--dark) 0%, rgba(7,17,31,0.72) 42%, var(--dark) 100%); }
+    .cta-content { max-width: 850px; margin: 0 auto; position: relative; z-index: 2; padding: clamp(34px, 6vw, 64px); border-radius: var(--radius-xl); background: linear-gradient(145deg, rgba(7,17,31,0.70), rgba(7,17,31,0.34)); border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow-xl); backdrop-filter: blur(18px); }
+    .cta-content::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(16,179,175,0.55), rgba(240,190,85,0.40), transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+    .cta-content h2 { margin-bottom: 18px; font-size: clamp(2.4rem, 6.6vw, 5.25rem); }
+    .cta-content p { max-width: 680px; margin-left: auto; margin-right: auto; }
 
-    /* Footer */
-    footer { padding: 48px 0; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04); }
-    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-    .footer-brand { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--white); margin-bottom: 4px; }
-    .footer-brand span { color: var(--gold); }
+    footer { padding: 52px 0; background: #050b14; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
+    footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(240,190,85,0.28), rgba(16,179,175,0.28), transparent); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-brand { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; color: var(--white); margin-bottom: 6px; letter-spacing: -0.04em; }
+    .footer-brand span { color: var(--gold-light); }
     .footer-copy { font-size: 0.8rem; color: var(--grey-dark); }
-    .footer-links { display: flex; gap: 24px; align-items: center; }
-    .footer-links a { font-size: 0.8rem; color: var(--grey-dark); display: inline-flex; align-items: center; gap: 6px; }
+    .footer-links { display: flex; gap: 22px; align-items: center; }
+    .footer-links a { font-size: 0.82rem; color: var(--grey-dark); display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
     .footer-links a:hover { color: var(--teal-light); }
     .footer-links svg { width: 16px; height: 16px; }
-    .footer-stripe { margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--grey-dark); }
+    .footer-stripe { margin-top: 10px; display: flex; align-items: center; gap: 8px; font-size: 0.73rem; color: var(--grey-dark); justify-content: flex-end; }
     .footer-stripe svg { width: 14px; height: 14px; }
 
-    /* === Mobile-first (base is 375px) === */
+    .tilt-card { transform-style: preserve-3d; }
 
-    /* Mobile: max 767px */
+    @media (max-width: 1023px) {
+      .container { width: min(100% - 40px, 900px); }
+      .hero-grid, .problem-layout, .cs-layout, .faq-layout { grid-template-columns: 1fr; }
+      .hero-content { text-align: left; }
+      .hero-visual-stage { min-height: auto; padding-top: 24px; place-items: center; }
+      .orbit-card.one { right: 1%; top: 2%; }
+      .orbit-card.two { left: 0; bottom: 4%; }
+      .orbit-card.three { display: none; }
+      .hiw-steps { grid-template-columns: 1fr; }
+      .hiw-steps::before { left: 31px; top: 62px; bottom: 62px; right: auto; width: 1px; height: auto; background: linear-gradient(180deg, transparent, rgba(16,179,175,0.5), rgba(240,190,85,0.48), transparent); }
+      .hiw-step { min-height: 0; padding-left: 96px; }
+      .hiw-num { position: absolute; left: 28px; top: 32px; width: 54px; height: 54px; border-radius: 18px; }
+      .stats-grid, .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .price-card.featured { transform: translateY(0); }
+      .price-card.featured:hover { transform: translateY(-12px); }
+      .faq-header { position: relative; top: auto; }
+    }
+
     @media (max-width: 767px) {
       body { font-size: 15px; }
-      .container { padding: 0 20px; }
-
-      /* Nav */
+      .container { width: min(100% - 32px, 640px); }
+      .nav { padding-top: 10px; }
+      .nav .container { border-radius: 24px; padding: 10px 12px 10px 16px; }
       .nav-links { display: none; }
-      .nav-toggle { display: block; }
+      .nav-toggle { display: block; flex-shrink: 0; }
       .nav-links.open {
-        display: flex; flex-direction: column; position: absolute;
-        top: 100%; left: 0; right: 0; background: rgba(15,23,42,0.98);
-        padding: 24px; gap: 16px; border-bottom: 1px solid rgba(10,107,107,0.15);
+        display: flex; flex-direction: column; align-items: stretch; position: absolute;
+        top: calc(100% + 10px); left: 16px; right: 16px; padding: 18px; gap: 8px;
+        border-radius: 24px; background: rgba(7,17,31,0.96); border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: var(--shadow-card); backdrop-filter: blur(20px);
       }
-      .nav-links.open .nav-cta-link { text-align: center; padding: 14px 24px; }
-
-      /* Hero */
-      #hero { padding: 110px 0 48px; }
-      .hero-grid { gap: 32px; }
-      .hero-content h1 { font-size: 2.2rem; max-width: 100%; }
-      .hero-sub { font-size: 0.95rem; max-width: 100%; margin-bottom: 28px; }
-      .hero-badge { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 20px; }
-      .hero-buttons { flex-direction: column; gap: 12px; }
-      .hero-buttons .btn-primary,
-      .hero-buttons .btn-secondary { width: 100%; text-align: center; justify-content: center; }
-      .hero-proof { flex-direction: column; gap: 8px; font-size: 0.78rem; line-height: 1.5; }
-      .iphone-wrap { max-width: 260px; }
-      .iphone-frame { padding: 44px 14px 20px; border-radius: 32px; }
-      .iphone-notch { width: 76px; height: 22px; top: 12px; }
-      .bubble { font-size: 0.75rem; padding: 9px 12px; }
-
-      /* Problem */
-      #problem { padding: 80px 0; }
-      .problem-layout { gap: 32px; }
-      .problem-img-wrap { border-radius: 10px; }
-      .problem-img-stat { bottom: 12px; left: 12px; padding: 12px 16px; }
-      .problem-img-stat-num { font-size: 1.25rem; }
-      .problem-card { padding: 20px 18px 20px 16px; }
-      .problem-card p { font-size: 0.9rem; }
-
-      /* How It Works */
-      #how-it-works { padding: 80px 0; }
-      .hiw-header { margin-bottom: 40px; }
-      .hiw-steps { gap: 28px; }
-      .hiw-step { grid-template-columns: 40px 1fr; gap: 14px; }
-      .hiw-num { width: 40px; height: 40px; font-size: 0.95rem; }
-      .hiw-steps::before { left: 20px; }
-
-      /* Stats */
-      #stats { padding: 80px 0; }
-      .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .stat-card { padding: 20px 12px; border-radius: 10px; }
-      .stat-number { font-size: 1.6rem; }
-      .stat-label { font-size: 0.8rem; }
-      .stat-compare { font-size: 0.7rem; }
-
-      /* Case Study */
-      #case-study { padding: 80px 0; }
-      .cs-layout { gap: 28px; }
-      .cs-card { padding: 28px 20px; }
-      .cs-card h2 { font-size: 1.4rem; }
-      .cs-tags { gap: 5px; }
-      .cs-tag { font-size: 0.65rem; padding: 4px 8px; }
-      .cs-outcome { font-size: 0.88rem; padding-left: 12px; }
-      .cs-quote { font-size: 0.95rem; padding-left: 18px; }
-
-      /* Pricing */
-      #pricing { padding: 80px 0; }
-      .pricing-grid { gap: 24px; }
-      .price-card.featured { order: -1; }
-      .price-card { padding: 28px 22px; }
-      .price-name { font-size: 1.3rem; }
-      .price-amount { font-size: 2.2rem; }
-      .price-desc { font-size: 0.82rem; }
-      .price-features { gap: 12px; }
-      .price-feature { font-size: 0.85rem; }
-      .price-card .btn-primary,
-      .price-card .btn-secondary { padding: 14px 20px; font-size: 0.95rem; min-height: 50px; }
-
-      /* FAQ */
-      #faq { padding: 80px 0; }
-      .faq-header h2 { font-size: 1.6rem; }
-      .faq-question { padding: 16px 18px; font-size: 0.9rem; }
-      .faq-answer-inner { padding: 0 18px 16px; font-size: 0.85rem; }
-      .faq-icon { width: 24px; height: 24px; }
-
-      /* CTA */
-      #cta { padding: 80px 0; }
-      .cta-content h2 { font-size: 1.7rem; }
-      .cta-content p { font-size: 0.92rem; }
-      .cta-content .btn-primary { width: 100%; }
-
-      /* Footer */
-      footer { padding: 32px 0; }
-      .footer-inner { gap: 20px; }
-      .footer-inner > div:last-child { align-items: center; }
-      .footer-links { gap: 16px; }
+      .nav-links.open a { text-align: center; padding: 13px 14px; }
+      #hero { padding-top: 112px; min-height: auto; }
+      .hero-content h1 { font-size: clamp(2.65rem, 15vw, 4.2rem); max-width: 100%; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; }
+      .hero-proof { align-items: flex-start; }
+      .hero-metrics { grid-template-columns: 1fr; }
+      .iphone-wrap { max-width: 290px; }
+      .iphone-frame { width: 286px; min-height: 540px; padding: 54px 14px 20px; border-radius: 42px; transform: none; }
+      .iphone-screen { min-height: 450px; border-radius: 28px; padding: 12px; }
+      .bubble { font-size: 0.74rem; padding: 10px 12px; }
+      .orbit-card { display: none; }
+      h2 { font-size: clamp(2rem, 12vw, 3.4rem); }
+      .problem-img-wrap { min-height: 330px; }
+      .problem-img-stat { flex-direction: column; align-items: flex-start; }
+      .problem-img-stat-label { text-align: left; }
+      .hiw-step { padding: 28px 24px 28px 82px; }
+      .hiw-num { left: 22px; top: 28px; width: 46px; height: 46px; border-radius: 16px; }
+      .hiw-steps::before { left: 45px; }
+      .stats-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .stat-card { min-height: 190px; }
+      .price-desc { min-height: 0; }
+      .cs-img-wrap img { min-height: 300px; }
+      .faq-question { padding: 20px; font-size: 0.94rem; }
+      .faq-answer-inner { padding: 0 20px 20px; }
+      .cta-content { padding: 32px 20px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-inner > div:last-child { align-items: center !important; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .footer-stripe { justify-content: center; }
+      .cursor-aura { display: none; }
     }
 
-    /* Tablet: 768px+ */
-    @media (min-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
-      .iphone-wrap { max-width: 300px; }
-      .problem-layout { grid-template-columns: 2fr 3fr; gap: 48px; }
-      .stats-grid { grid-template-columns: repeat(4, 1fr); }
-      .cs-layout { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-      .faq-layout { grid-template-columns: 1fr 2fr; gap: 56px; }
-      .footer-inner { flex-direction: row; justify-content: space-between; }
-    }
-
-    /* Desktop: 1024px+ */
-    @media (min-width: 1024px) {
-      .hero-content h1 { font-size: 4rem; }
-      .hiw-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-      .hiw-steps::before { display: none; }
-      .hiw-step { grid-template-columns: 1fr; text-align: center; }
-      .hiw-num { margin: 0 auto 16px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.001ms !important; }
+      .reveal { opacity: 1; transform: none; filter: none; }
+      .loader { display: none; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#hero">Skip to content</a>
+  <div class="loader" id="pageLoader" aria-hidden="true"><div class="loader-core"></div></div>
+  <div class="visual-noise" aria-hidden="true"></div>
+  <div class="ambient-orb orb-a" aria-hidden="true"></div>
+  <div class="ambient-orb orb-b" aria-hidden="true"></div>
+  <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
 
-  <!-- Nav -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-progress scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
     <div class="container">
       <a href="#hero" class="nav-logo">DM<span>Engine</span></a>
       <div class="nav-links" id="navLinks">
@@ -564,68 +602,78 @@
         <a href="#faq">FAQ</a>
         <a href="#pricing" class="nav-cta-link">Get Started</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <main>
-    <!-- Hero -->
-    <section id="hero">
-      <div class="hero-glow"></div>
-      <div class="hero-glow-gold"></div>
+  <main id="hero">
+    <div class="orbital-ring" aria-hidden="true"></div>
+    <section class="section-shell" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-            <div class="hero-badge"><span class="hero-badge-dot"></span> ManyChat Automation</div>
-            <h1>Your followers are commenting. <em>Nobody's answering.</em></h1>
-            <p class="hero-sub">The DM Engine turns every Instagram comment into an instant conversation. It delivers your lead magnet, answers questions, and books calls on autopilot. Built for coaches and wellness brands who are done losing leads to slow replies.</p>
-            <div class="hero-buttons">
+            <div class="hero-badge reveal"><span class="hero-badge-dot"></span> ManyChat Automation</div>
+            <h1 id="hero-title" class="reveal reveal-d1">Your followers are commenting. <em>Nobody's answering.</em></h1>
+            <p class="hero-sub reveal reveal-d2">The DM Engine turns every Instagram comment into an instant conversation. It delivers your lead magnet, answers questions, and books calls on autopilot. Built for coaches and wellness brands who are done losing leads to slow replies.</p>
+            <div class="hero-buttons reveal reveal-d3">
               <a href="#pricing" class="btn-primary">See Pricing &amp; Get Started</a>
               <a href="#how-it-works" class="btn-secondary">See How It Works</a>
             </div>
-            <div class="hero-proof">
-              <div class="hero-proof-avatars">
-                <div class="hero-proof-avatar" style="background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--white);font-family:var(--font-display);">YH</div>
-                <div class="hero-proof-avatar" style="background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--dark);font-family:var(--font-display);">NM</div>
+            <div class="hero-proof reveal reveal-d4">
+              <div class="hero-proof-avatars" aria-hidden="true">
+                <div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));color:var(--white);">YH</div>
+                <div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);">NM</div>
               </div>
-              Trusted by Ninja Motion Therapies. 7 live flows. 34 audience tags. Fully automated.
+              <span>Trusted by Ninja Motion Therapies. 7 live flows. 34 audience tags. Fully automated.</span>
+            </div>
+            <div class="hero-metrics reveal reveal-d4" aria-label="DM Engine proof points">
+              <div class="hero-metric"><strong>7</strong><span>live keyword flows</span></div>
+              <div class="hero-metric"><strong>34</strong><span>audience tags</span></div>
+              <div class="hero-metric"><strong>5-7</strong><span>business day setup</span></div>
             </div>
           </div>
-          <div class="iphone-wrap">
-            <div class="iphone-frame">
-              <div class="iphone-notch"></div>
-              <div class="iphone-header">
-                <div class="iphone-avatar-circle" style="background:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.7rem;font-weight:700;color:var(--white);">NM</div>
-                <div>
-                  <div class="iphone-name">Ninja Motion</div>
-                  <div class="iphone-status">Active now</div>
-                </div>
-              </div>
-              <div class="chat-bubbles">
-                <div class="bubble bubble-user">NECK</div>
-                <div class="bubble bubble-brand">Hey! Looks like you're dealing with neck pain. We've got you covered</div>
-                <div class="bubble bubble-brand">Here's our free Neck Reset Guide. 3 moves you can do right now:</div>
-                <div class="bubble bubble-brand bubble-link">Neck-Reset-Guide.pdf</div>
-                <div class="bubble bubble-brand">Want to book a session? Tap below to grab a time that works for you</div>
-                <div class="typing-indicator">
-                  <div class="typing-dot"></div>
-                  <div class="typing-dot"></div>
-                  <div class="typing-dot"></div>
+
+          <div class="hero-visual-stage reveal reveal-d2" aria-label="Automated DM conversation mockup">
+            <div class="iphone-wrap" data-parallax="0.035">
+              <div class="iphone-frame tilt-card">
+                <div class="iphone-notch"></div>
+                <div class="iphone-screen">
+                  <div class="iphone-header">
+                    <div class="iphone-avatar-circle">NM</div>
+                    <div>
+                      <div class="iphone-name">Ninja Motion</div>
+                      <div class="iphone-status">Active now</div>
+                    </div>
+                  </div>
+                  <div class="chat-bubbles">
+                    <div class="bubble bubble-user">NECK</div>
+                    <div class="bubble bubble-brand">Hey! Looks like you're dealing with neck pain. We've got you covered</div>
+                    <div class="bubble bubble-brand">Here's our free Neck Reset Guide. 3 moves you can do right now:</div>
+                    <div class="bubble bubble-brand bubble-link">Neck-Reset-Guide.pdf</div>
+                    <div class="bubble bubble-brand">Want to book a session? Tap below to grab a time that works for you</div>
+                    <div class="typing-indicator" aria-label="Typing indicator">
+                      <div class="typing-dot"></div>
+                      <div class="typing-dot"></div>
+                      <div class="typing-dot"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="orbit-card one" data-parallax="0.065"><strong>391%</strong><span>Conversion lift in 60 seconds</span></div>
+            <div class="orbit-card two" data-parallax="0.05"><strong>90%</strong><span>DM open rate benchmark</span></div>
+            <div class="orbit-card three" data-parallax="0.08"><strong>Instant</strong><span>Keyword-triggered delivery</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Problem -->
-    <section id="problem">
+    <section id="problem" class="section-shell">
       <div class="container">
         <div class="problem-layout">
-          <div class="reveal">
+          <div class="visual-frame reveal tilt-card">
             <div class="problem-img-wrap">
               <img src="image1.png" alt="ManyChat DM automation conversation on phone" loading="lazy" style="object-fit:contain;background:#f4f0eb;">
               <div class="problem-img-overlay"></div>
@@ -635,37 +683,32 @@
               </div>
             </div>
           </div>
-          <div>
-            <h2 class="reveal">While you sleep, your leads move on.</h2>
+          <div class="problem-copy">
+            <div class="section-eyebrow reveal">Lead leakage</div>
+            <h2 class="reveal reveal-d1">While you sleep, your leads move on.</h2>
             <div class="problem-cards">
-              <div class="problem-card reveal reveal-d1">
-                <p>Someone comments "How much?" on your Reel at 11pm. You reply at 9am. They've already booked with your competitor.</p>
-              </div>
-              <div class="problem-card reveal reveal-d2">
-                <p>You're spending hours in DMs copy-pasting the same pricing PDF and booking link to every enquiry.</p>
-              </div>
-              <div class="problem-card reveal reveal-d3">
-                <p>Your lead magnet sits in a Google Drive folder. The 200 people who asked for it last month? Most never got it.</p>
-              </div>
+              <div class="problem-card reveal reveal-d1"><p>Someone comments "How much?" on your Reel at 11pm. You reply at 9am. They've already booked with your competitor.</p></div>
+              <div class="problem-card reveal reveal-d2"><p>You're spending hours in DMs copy-pasting the same pricing PDF and booking link to every enquiry.</p></div>
+              <div class="problem-card reveal reveal-d3"><p>Your lead magnet sits in a Google Drive folder. The 200 people who asked for it last month? Most never got it.</p></div>
             </div>
-            <div class="reveal reveal-d4" style="margin-top:24px;padding:20px 24px;border-radius:8px;background:rgba(10,107,107,0.08);border:1px solid rgba(10,107,107,0.18);">
-              <p style="margin:0;font-size:0.95rem;">Responding within <strong style="color:var(--gold);">60 seconds</strong> boosts conversions by <strong style="color:var(--gold);">391%</strong>. The average business takes <strong style="color:var(--gold);">42 hours</strong> to respond.</p>
+            <div class="insight-callout reveal reveal-d4">
+              <p>Responding within <strong class="gold">60 seconds</strong> boosts conversions by <strong class="gold">391%</strong>. The average business takes <strong class="gold">42 hours</strong> to respond.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works">
+    <section id="how-it-works" class="section-shell">
       <div class="hiw-glow"></div>
       <div class="container">
         <div class="hiw-header reveal">
+          <div class="section-eyebrow">System architecture</div>
           <h2>Three steps. Zero manual replies.</h2>
           <p>Set it up once. Let it run forever. Here's how your DM Engine works.</p>
         </div>
         <div class="hiw-steps">
-          <div class="hiw-step reveal reveal-d1">
+          <div class="hiw-step reveal reveal-d1 tilt-card">
             <div class="hiw-num">1</div>
             <div>
               <h3>Trigger</h3>
@@ -673,7 +716,7 @@
               <span class="hiw-keyword">"GUIDE" "PRICE" "BOOK"</span>
             </div>
           </div>
-          <div class="hiw-step reveal reveal-d2">
+          <div class="hiw-step reveal reveal-d2 tilt-card">
             <div class="hiw-num">2</div>
             <div>
               <h3>Capture</h3>
@@ -681,7 +724,7 @@
               <span class="hiw-keyword">Instant DM delivery</span>
             </div>
           </div>
-          <div class="hiw-step reveal reveal-d3">
+          <div class="hiw-step reveal reveal-d3 tilt-card">
             <div class="hiw-num">3</div>
             <div>
               <h3>Convert</h3>
@@ -690,218 +733,140 @@
             </div>
           </div>
         </div>
-        <div class="hiw-img reveal" style="margin-top:56px;">
-          <img src="visualflow.png" alt="ManyChat automation flow builder showing 5-step DM sequence" loading="lazy" style="object-fit:cover;">
+        <div class="hiw-img reveal">
+          <div class="visual-frame tilt-card">
+            <img src="visualflow.png" alt="ManyChat automation flow builder showing 5-step DM sequence" loading="lazy" style="object-fit:cover;">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats -->
-    <section id="stats">
+    <section id="stats" class="section-shell">
       <div class="container">
         <div class="stats-header reveal">
+          <div class="section-eyebrow">Benchmarks</div>
           <h2>The numbers that made us stop using email for lead capture.</h2>
         </div>
         <div class="stats-grid">
-          <div class="stat-card reveal reveal-d1">
-            <div class="stat-number" data-target="90" data-suffix="%">0%</div>
-            <div class="stat-label">DM Open Rate</div>
-            <div class="stat-compare">vs 17-35% for email</div>
-          </div>
-          <div class="stat-card reveal reveal-d2">
-            <div class="stat-number" data-target="55" data-suffix="%">0%</div>
-            <div class="stat-label">DM Reply Rate</div>
-            <div class="stat-compare">vs less than 10% for email</div>
-          </div>
-          <div class="stat-card reveal reveal-d3">
-            <div class="stat-number" data-target="391" data-suffix="%">0%</div>
-            <div class="stat-label">Conversion Lift</div>
-            <div class="stat-compare">when responding within 60 seconds</div>
-          </div>
-          <div class="stat-card reveal reveal-d4">
-            <div class="stat-number" data-target="1.4" data-prefix="$" data-suffix="M" data-decimals="1">$0M</div>
-            <div class="stat-label">Revenue from DM Funnels</div>
-            <div class="stat-compare">Amy Porterfield. 19 funnels. 18k+ emails.</div>
-          </div>
+          <div class="stat-card reveal reveal-d1 tilt-card"><div class="stat-number" data-target="90" data-suffix="%">90%</div><div class="stat-label">DM Open Rate</div><div class="stat-compare">vs 17-35% for email</div></div>
+          <div class="stat-card reveal reveal-d2 tilt-card"><div class="stat-number" data-target="55" data-suffix="%">55%</div><div class="stat-label">DM Reply Rate</div><div class="stat-compare">vs less than 10% for email</div></div>
+          <div class="stat-card reveal reveal-d3 tilt-card"><div class="stat-number" data-target="391" data-suffix="%">391%</div><div class="stat-label">Conversion Lift</div><div class="stat-compare">when responding within 60 seconds</div></div>
+          <div class="stat-card reveal reveal-d4 tilt-card"><div class="stat-number" data-target="1.4" data-prefix="$" data-suffix="M" data-decimals="1">$1.4M</div><div class="stat-label">Revenue from DM Funnels</div><div class="stat-compare">Amy Porterfield. 19 funnels. 18k+ emails.</div></div>
         </div>
         <p class="stats-source reveal">Industry benchmarks from ManyChat, Unkoa Marketing, and published creator case studies (2025-2026).</p>
       </div>
     </section>
 
-    <!-- Case Study -->
-    <section id="case-study">
+    <section id="case-study" class="section-shell">
       <div class="cs-glow"></div>
       <div class="container">
         <div class="cs-layout">
-          <div class="reveal">
+          <div class="visual-frame reveal tilt-card">
             <div class="cs-img-wrap">
               <img src="result1.png" alt="ManyChat Bot Overview dashboard showing active contacts and growth" loading="lazy" style="object-fit:contain;background:#f7f8fa;">
               <div class="cs-img-badge">Live ManyChat Dashboard</div>
             </div>
           </div>
-          <div class="cs-card reveal reveal-d1">
+          <div class="cs-card reveal reveal-d1 tilt-card">
             <div class="cs-eyebrow">Real Results</div>
             <h2>Ninja Motion Therapies</h2>
-            <p style="margin-bottom:16px;">Movement therapy clinic run by Yuhan Harris. We built their entire comment-to-booking pipeline from scratch.</p>
-            <div class="cs-tags">
-              <span class="cs-tag">MOVE</span><span class="cs-tag">RESET</span><span class="cs-tag">PRICE</span>
-              <span class="cs-tag">WORKSHOP</span><span class="cs-tag">JAW</span><span class="cs-tag">HIP</span><span class="cs-tag">NECK</span>
-            </div>
+            <p>Movement therapy clinic run by Yuhan Harris. We built their entire comment-to-booking pipeline from scratch.</p>
+            <div class="cs-tags"><span class="cs-tag">MOVE</span><span class="cs-tag">RESET</span><span class="cs-tag">PRICE</span><span class="cs-tag">WORKSHOP</span><span class="cs-tag">JAW</span><span class="cs-tag">HIP</span><span class="cs-tag">NECK</span></div>
             <p class="cs-outcome">Every Instagram comment now triggers an immediate, personalised DM sequence. Followers who comment "NECK" get neck pain content and a booking link. "PRICE" gets the pricing breakdown. No manual replies needed. Leads go from comment to booked call without Yuhan touching his phone.</p>
-            <div class="cs-quote">
-              The DM Engine turned our Instagram from a content feed into a booking machine.
-              <div class="cs-quote-attr">Yuhan Harris, Ninja Motion Therapies</div>
-            </div>
+            <div class="cs-quote">The DM Engine turned our Instagram from a content feed into a booking machine.<div class="cs-quote-attr">Yuhan Harris, Ninja Motion Therapies</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing">
+    <section id="pricing" class="section-shell">
       <div class="container">
         <div class="pricing-header reveal">
+          <div class="section-eyebrow">Packages</div>
           <h2>Pick your plan. Get booked out faster.</h2>
           <p>Every package includes a strategy call, full build, and post-launch support. Choose the one that fits your business.</p>
         </div>
         <div class="pricing-grid">
-          <!-- Starter -->
-          <div class="price-card reveal reveal-d1">
-            <div class="price-badge">Popular</div>
-            <div class="price-tier">Starter</div>
-            <div class="price-name">DM Kickstart</div>
-            <div class="price-amount"><span>$1,500</span></div>
-            <div class="price-desc">One-time setup. Perfect if you're just getting started with DM automation.</div>
+          <div class="price-card reveal reveal-d1 tilt-card">
+            <div class="price-badge">Popular</div><div class="price-tier">Starter</div><div class="price-name">DM Kickstart</div><div class="price-amount"><span>$1,500</span></div><div class="price-desc">One-time setup. Perfect if you're just getting started with DM automation.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>3 custom keyword trigger flows</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>ManyChat tag architecture</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Booking system integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>30-min strategy call</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>7 days post-launch support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>3 custom keyword trigger flows</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>ManyChat tag architecture</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Booking system integration</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>30-min strategy call</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>7 days post-launch support</span></li>
             </ul>
             <button onclick="stripeCheckout('starter')" class="btn-primary" type="button">Get The DM Engine</button>
           </div>
-
-          <!-- Growth (Featured) -->
-          <div class="price-card featured reveal reveal-d2">
-            <div class="price-badge">Most Popular</div>
-            <div class="price-tier">Growth</div>
-            <div class="price-name">The DM Engine</div>
-            <div class="price-amount"><span>$2,500</span></div>
-            <div class="price-desc">One-time setup. The full system. Built for coaches ready to scale.</div>
+          <div class="price-card featured reveal reveal-d2 tilt-card">
+            <div class="price-badge">Most Popular</div><div class="price-tier">Growth</div><div class="price-name">The DM Engine</div><div class="price-amount"><span>$2,500</span></div><div class="price-desc">One-time setup. The full system. Built for coaches ready to scale.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>5 custom keyword trigger flows</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Full tag architecture + segmentation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Calendly/booking integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact hygiene setup (save on ManyChat)</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>60-min strategy call</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>14 days post-launch support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>5 custom keyword trigger flows</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Full tag architecture + segmentation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Calendly/booking integration</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact hygiene setup (save on ManyChat)</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>60-min strategy call</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>14 days post-launch support</span></li>
             </ul>
             <button onclick="stripeCheckout('growth')" class="btn-primary" type="button">Get The DM Engine</button>
           </div>
-
-          <!-- Scale -->
-          <div class="price-card reveal reveal-d3">
-            <div class="price-tier">Scale</div>
-            <div class="price-name">Full Retainer</div>
-            <div class="price-amount"><span>$5,000</span><span style="font-size:1rem;font-weight:500;color:var(--grey);">/mo</span></div>
-            <div class="price-desc">Ongoing. Marketing, automation, and guaranteed leads. Every month.</div>
+          <div class="price-card reveal reveal-d3 tilt-card">
+            <div class="price-tier">Scale</div><div class="price-name">Full Retainer</div><div class="price-amount"><span>$5,000</span><span style="font-size:1rem;font-weight:500;color:var(--grey);letter-spacing:0;">/mo</span></div><div class="price-desc">Ongoing. Marketing, automation, and guaranteed leads. Every month.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in The DM Engine</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Unlimited keyword flows + updates</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Content strategy + lead generation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly optimisation + reporting</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dedicated account manager</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority Slack support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in The DM Engine</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Unlimited keyword flows + updates</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Content strategy + lead generation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly optimisation + reporting</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dedicated account manager</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority Slack support</span></li>
             </ul>
             <button onclick="stripeCheckout('scale')" class="btn-secondary" type="button">Apply Now</button>
           </div>
         </div>
         <div class="pricing-guarantee reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0D8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           All setups complete in 5-7 business days. Secure payment via Stripe.
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
+    <section id="faq" class="section-shell">
       <div class="container">
         <div class="faq-layout">
           <div class="faq-header reveal">
+            <div class="section-eyebrow">FAQ</div>
             <h2>Got questions? We've got answers.</h2>
             <p>Everything you need to know before getting started.</p>
           </div>
           <div class="faq-list" id="faqList">
-            <div class="faq-item reveal reveal-d1">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
-                <span>Do I need a ManyChat account?</span>
-                <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-              </button>
-              <div class="faq-answer" id="faq-a1" aria-hidden="true">
-                <div class="faq-answer-inner"><p>Yes. You'll need a ManyChat Pro account ($29/month for up to 2,500 contacts). If you don't have one yet, we set it up for you as part of the build.</p></div>
-              </div>
-            </div>
-            <div class="faq-item reveal reveal-d1">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
-                <span>Will this work for my niche?</span>
-                <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-              </button>
-              <div class="faq-answer" id="faq-a2" aria-hidden="true">
-                <div class="faq-answer-inner"><p>If your clients discover you on Instagram and you want more bookings, yes. We've built systems for movement therapists, personal trainers, coaches, and wellness practitioners. The keyword flows are customised to your specific offers and audience.</p></div>
-              </div>
-            </div>
-            <div class="faq-item reveal reveal-d2">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
-                <span>What if I already have some ManyChat automation?</span>
-                <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-              </button>
-              <div class="faq-answer" id="faq-a3" aria-hidden="true">
-                <div class="faq-answer-inner"><p>We audit your existing setup first. If parts of it work, we keep them. If it's held together with duct tape (most are), we rebuild the flows properly with clean tagging and segmentation.</p></div>
-              </div>
-            </div>
-            <div class="faq-item reveal reveal-d2">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
-                <span>How fast will I see results?</span>
-                <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-              </button>
-              <div class="faq-answer" id="faq-a4" aria-hidden="true">
-                <div class="faq-answer-inner"><p>Most clients see their first automated DM conversation within the first day of launch. The first automated booking typically happens within the first week.</p></div>
-              </div>
-            </div>
-            <div class="faq-item reveal reveal-d3">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
-                <span>What happens after the support period ends?</span>
-                <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-              </button>
-              <div class="faq-answer" id="faq-a5" aria-hidden="true">
-                <div class="faq-answer-inner"><p>You've got two options. We train you to manage the system yourself. It's not complicated once it's built. Or you can upgrade to our monthly retainer where we handle ongoing optimisation, new flows, content strategy, and lead generation.</p></div>
-              </div>
-            </div>
+            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a1" type="button"><span>Do I need a ManyChat account?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a1" aria-hidden="true"><div class="faq-answer-inner"><p>Yes. You'll need a ManyChat Pro account ($29/month for up to 2,500 contacts). If you don't have one yet, we set it up for you as part of the build.</p></div></div></div>
+            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a2" type="button"><span>Will this work for my niche?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a2" aria-hidden="true"><div class="faq-answer-inner"><p>If your clients discover you on Instagram and you want more bookings, yes. We've built systems for movement therapists, personal trainers, coaches, and wellness practitioners. The keyword flows are customised to your specific offers and audience.</p></div></div></div>
+            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a3" type="button"><span>What if I already have some ManyChat automation?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a3" aria-hidden="true"><div class="faq-answer-inner"><p>We audit your existing setup first. If parts of it work, we keep them. If it's held together with duct tape (most are), we rebuild the flows properly with clean tagging and segmentation.</p></div></div></div>
+            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a4" type="button"><span>How fast will I see results?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a4" aria-hidden="true"><div class="faq-answer-inner"><p>Most clients see their first automated DM conversation within the first day of launch. The first automated booking typically happens within the first week.</p></div></div></div>
+            <div class="faq-item reveal reveal-d3"><button class="faq-question" aria-expanded="false" aria-controls="faq-a5" type="button"><span>What happens after the support period ends?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a5" aria-hidden="true"><div class="faq-answer-inner"><p>You've got two options. We train you to manage the system yourself. It's not complicated once it's built. Or you can upgrade to our monthly retainer where we handle ongoing optimisation, new flows, content strategy, and lead generation.</p></div></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section id="cta">
+    <section id="cta" class="section-shell">
       <div class="cta-bg">
-        <img src="image2.png" alt="ManyChat integrations with Google Sheets, Zapier, HubSpot, and more" loading="lazy" style="object-fit:contain;background:#ffffff;">
+        <img src="image2.png" alt="ManyChat integrations with Google Sheets, Zapier, HubSpot, and more" loading="lazy" style="object-fit:cover;background:#ffffff;">
         <div class="cta-bg-overlay"></div>
       </div>
       <div class="container">
-        <div class="cta-content">
-          <h2 class="reveal">Every day without automation is leads walking past your door.</h2>
-          <p class="reveal reveal-d1" style="font-size:1.05rem;color:var(--grey);margin-bottom:36px;">Your competitors are already automating their DMs. The coaches booking out their calendars aren't replying faster. They built a system that replies for them.</p>
-          <a href="#pricing" class="btn-primary reveal reveal-d2">See Pricing &amp; Get Started</a>
+        <div class="cta-content tilt-card">
+          <div class="section-eyebrow reveal">Final call</div>
+          <h2 class="reveal reveal-d1">Ready to stop losing leads in your DMs? Every day without automation is leads walking past your door.</h2>
+          <p class="reveal reveal-d2" style="font-size:1.05rem;color:var(--grey);margin-bottom:36px;">Your competitors are already automating their DMs. The coaches booking out their calendars aren't replying faster. They built a system that replies for them.</p>
+          <a href="#pricing" class="btn-primary reveal reveal-d3">See Pricing &amp; Get Started</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -911,49 +876,17 @@
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
           <div class="footer-links">
-            <a href="https://instagram.com/taifalsad" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              @taifalsad
-            </a>
-            <a href="mailto:support@mctoyou.com">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Email
-            </a>
+            <a href="https://instagram.com/taifalsad" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@taifalsad</a>
+            <a href="mailto:support@mctoyou.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
           </div>
-          <div class="footer-stripe">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Secure payments by Stripe
-          </div>
+          <div class="footer-stripe"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure payments by Stripe</div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Stripe.js -->
   <script src="https://js.stripe.com/v3/"></script>
-
   <script>
-    /*
-     * ============================================================
-     *  STRIPE SETUP — YOU NEED TO DO 3 THINGS:
-     * ============================================================
-     *
-     *  1. Go to https://dashboard.stripe.com/apikeys
-     *     Copy your PUBLISHABLE key (starts with pk_live_)
-     *     Paste it below replacing 'pk_live_YOUR_PUBLISHABLE_KEY'
-     *
-     *  2. Go to https://dashboard.stripe.com/payment-links
-     *     Create 3 Payment Links:
-     *       - Starter ($1,500 one-time)
-     *       - Growth / The DM Engine ($2,500 one-time)
-     *       - Scale / Full Retainer ($5,000 recurring monthly)
-     *     Copy each Payment Link URL
-     *
-     *  3. Paste each URL below in the PRICE_LINKS object
-     *
-     *  That's it. Save, deploy, and you're live.
-     * ============================================================
-     */
     const STRIPE_CONFIG = {
       publishableKey: 'pk_live_51TBcL6JXX3XVkdoSCvOHtRMF99zYWVhIfD7CKATIp4sVozWRLGGWpJHnsnVD5NFSi3OziHvzv4TF4TUXIlZuFpAG007kTigfBu',
       paymentLinks: {
@@ -973,31 +906,30 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      /* Intersection Observer for reveals */
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const loader = document.getElementById('pageLoader');
+      if (loader) window.setTimeout(function() { loader.classList.add('hide'); }, reduceMotion ? 0 : 520);
+
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             const counters = entry.target.querySelectorAll('.stat-number[data-target]');
             counters.forEach(function(c) { animateCounter(c); });
-            if (entry.target.classList.contains('stat-number') && entry.target.dataset.target) {
-              animateCounter(entry.target);
-            }
+            if (entry.target.classList.contains('stat-number') && entry.target.dataset.target) animateCounter(entry.target);
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-
       document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 
-      /* Counter */
       function animateCounter(el) {
         if (el.dataset.counted) return;
         el.dataset.counted = 'true';
         const target = parseFloat(el.dataset.target);
         const prefix = el.dataset.prefix || '';
         const suffix = el.dataset.suffix || '';
-        const decimals = parseInt(el.dataset.decimals) || 0;
-        const duration = 2000;
+        const decimals = parseInt(el.dataset.decimals, 10) || 0;
+        const duration = reduceMotion ? 1 : 2000;
         let start = null;
         function ease(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
         function step(ts) {
@@ -1010,7 +942,6 @@
         requestAnimationFrame(step);
       }
 
-      /* FAQ Accordion */
       const faqList = document.getElementById('faqList');
       if (faqList) {
         faqList.addEventListener('click', function(e) {
@@ -1020,9 +951,10 @@
           const isOpen = btn.getAttribute('aria-expanded') === 'true';
           faqList.querySelectorAll('.faq-question').forEach(function(b) {
             if (b !== btn) {
+              const otherAnswer = b.parentElement.querySelector('.faq-answer');
               b.setAttribute('aria-expanded', 'false');
-              b.parentElement.querySelector('.faq-answer').style.maxHeight = '0';
-              b.parentElement.querySelector('.faq-answer').setAttribute('aria-hidden', 'true');
+              otherAnswer.style.maxHeight = '0';
+              otherAnswer.setAttribute('aria-hidden', 'true');
             }
           });
           if (isOpen) {
@@ -1037,13 +969,24 @@
         });
       }
 
-      /* Nav scroll */
       const nav = document.querySelector('.nav');
-      window.addEventListener('scroll', function() {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-      }, { passive: true });
+      const progress = document.getElementById('scrollProgress');
+      const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+      const sections = navAnchors.map(function(a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+      function updateNav() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (nav) nav.classList.toggle('scrolled', y > 50);
+        if (progress) {
+          const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          progress.style.width = Math.min(100, (y / max) * 100) + '%';
+        }
+        let current = null;
+        sections.forEach(function(section) { if (section.offsetTop - 160 <= y) current = section.id; });
+        navAnchors.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+      }
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
 
-      /* Mobile nav */
       const toggle = document.getElementById('navToggle');
       const links = document.getElementById('navLinks');
       if (toggle && links) {
@@ -1056,6 +999,33 @@
             links.classList.remove('open');
             toggle.setAttribute('aria-expanded', 'false');
           });
+        });
+      }
+
+      if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+        const aura = document.getElementById('cursorAura');
+        window.addEventListener('pointermove', function(e) {
+          if (aura) {
+            aura.style.opacity = '1';
+            aura.style.left = e.clientX + 'px';
+            aura.style.top = e.clientY + 'px';
+          }
+          document.querySelectorAll('[data-parallax]').forEach(function(el) {
+            const amount = parseFloat(el.dataset.parallax) || 0.03;
+            const x = (e.clientX - window.innerWidth / 2) * amount;
+            const y = (e.clientY - window.innerHeight / 2) * amount;
+            el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+          });
+        }, { passive: true });
+
+        document.querySelectorAll('.tilt-card').forEach(function(card) {
+          card.addEventListener('pointermove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = 'perspective(900px) rotateX(' + (-y * 4).toFixed(2) + 'deg) rotateY(' + (x * 5).toFixed(2) + 'deg) translateY(-2px)';
+          });
+          card.addEventListener('pointerleave', function() { card.style.transform = ''; });
         });
       }
     });
