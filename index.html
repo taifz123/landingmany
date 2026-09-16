@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The DM Engine | ManyChat Automation for Coaches & Wellness Brands</title>
-  <meta name="description" content="Turn every Instagram comment into a booked call. The DM Engine is a done-for-you ManyChat automation setup for coaches, PTs, and wellness practitioners. Starting from $1,500.">
+  <title>MCTOYOU — Media Created For You</title>
+  <meta name="description" content="MCTOYOU creates premium marketing websites, conversion-focused content, and ongoing growth support for ambitious businesses.">
   <link rel="canonical" href="https://mctoyou.com">
-  <meta property="og:title" content="The DM Engine | Your Comments Are Leads. Start Capturing Them.">
-  <meta property="og:description" content="Done-for-you ManyChat automation that turns Instagram comments into instant DM conversations and booked calls. Built for coaches and wellness brands.">
+  <meta property="og:title" content="The MCTOYOU | Your Comments Are Leads. Start Capturing Them.">
+  <meta property="og:description" content="Premium marketing websites and ongoing growth support, created for your business.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mctoyou.com">
   <meta name="twitter:card" content="summary_large_image">
@@ -512,6 +512,21 @@
 
     .tilt-card { transform-style: preserve-3d; }
 
+    .glass-card { background: linear-gradient(145deg, rgba(19,35,55,0.88), rgba(7,17,31,0.82)); border: 1px solid rgba(255,255,255,0.11); box-shadow: 0 24px 80px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.06); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+    .stat-card { box-shadow: 0 18px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(16,179,175,0.06); }
+    .price-card:hover { box-shadow: 0 24px 70px rgba(0,0,0,0.4), 0 0 36px rgba(16,179,175,0.12); }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(2,8,16,0.78); opacity: 0; pointer-events: none; transition: opacity 220ms ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .modal-backdrop[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+    .consult-modal { position: relative; width: min(100%, 540px); padding: clamp(28px, 6vw, 52px); border-radius: var(--radius-xl); transform: translateY(16px) scale(.98); transition: transform 220ms ease; }
+    .modal-backdrop[aria-hidden="false"] .consult-modal { transform: translateY(0) scale(1); }
+    .consult-modal h2 { max-width: 420px; margin-bottom: 18px; }
+    .consult-modal p { color: var(--grey); margin-bottom: 16px; }
+    .consult-modal .btn-primary { margin-top: 14px; display: inline-flex; }
+    .modal-close { position: absolute; top: 16px; right: 18px; width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; color: var(--grey); background: rgba(255,255,255,0.04); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+    .modal-close:hover, .modal-close:focus-visible { color: var(--white); border-color: var(--gold); outline: none; }
+    .modal-phone { color: var(--gold-light); font-weight: 800; white-space: nowrap; }
+    .modal-open { overflow: hidden; }
+
     @media (max-width: 1023px) {
       .container { width: min(100% - 40px, 900px); }
       .hero-grid, .problem-layout, .cs-layout, .faq-layout { grid-template-columns: 1fr; }
@@ -666,7 +681,7 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-progress scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
     <div class="container">
-      <a href="#hero" class="nav-logo">DM<span>Engine</span></a>
+      <a href="#hero" class="nav-logo"><span>MCTO</span>YOU</a>
       <div class="nav-links" id="navLinks">
         <a href="#how-it-works">How It Works</a>
         <a href="#case-study">Case Study</a>
@@ -686,28 +701,18 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-            <div class="hero-badge reveal"><span class="hero-badge-dot"></span> ManyChat Automation</div>
-            <h1 id="hero-title" class="reveal reveal-d1"><span class="hero-line">Your followers</span> <span class="hero-line">are commenting.</span> <em><span class="hero-line">Nobody's</span> <span class="hero-line">answering.</span></em></h1>
-            <p class="hero-sub reveal reveal-d2">The DM Engine turns every Instagram comment into an instant conversation. It delivers your lead magnet, answers questions, and books calls on autopilot. Built for coaches and wellness brands who are done losing leads to slow replies.</p>
+            <div class="hero-badge reveal"><span class="hero-badge-dot"></span> Media Created For You</div>
+            <h1 id="hero-title" class="reveal reveal-d1"><span class="hero-line">Your business is ready</span> <span class="hero-line">to be seen.</span> <em><span class="hero-line">Your website</span> <span class="hero-line">should be too.</span></em></h1>
+            <p class="hero-sub reveal reveal-d2">MCTOYOU creates premium marketing websites, conversion-focused copy, and ongoing growth systems for businesses ready to look as good online as they are in real life.</p>
             <div class="hero-buttons reveal reveal-d3">
               <a href="#pricing" class="btn-primary">See Pricing &amp; Get Started</a>
               <a href="#how-it-works" class="btn-secondary">See How It Works</a>
             </div>
-            <div class="hero-proof reveal reveal-d4">
-              <div class="hero-proof-avatars" aria-hidden="true">
-                <div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));color:var(--white);">YH</div>
-                <div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);">NM</div>
-              </div>
-              <span>Trusted by Ninja Motion Therapies. 7 live flows. 34 audience tags. Fully automated.</span>
-            </div>
-            <div class="hero-metrics reveal reveal-d4" aria-label="DM Engine proof points">
-              <div class="hero-metric"><strong>7</strong><span>live keyword flows</span></div>
-              <div class="hero-metric"><strong>34</strong><span>audience tags</span></div>
-              <div class="hero-metric"><strong>5-7</strong><span>business day setup</span></div>
-            </div>
+            <div class="hero-proof reveal reveal-d4"><div class="hero-proof-avatars" aria-hidden="true"><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));color:var(--white);">MC</div><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);">TY</div></div><span>Media created for you. Built for clarity, confidence, and growth.</span></div>
+            <div class="hero-metrics reveal reveal-d4" aria-label="MCTOYOU proof points"><div class="hero-metric"><strong>5</strong><span>page website builds</span></div><div class="hero-metric"><strong>48</strong><span>hour launch sprints</span></div><div class="hero-metric"><strong>1</strong><span>growth partner</span></div></div>
           </div>
 
-          <div class="hero-visual-stage reveal reveal-d2" aria-label="Automated DM conversation mockup">
+          <div class="hero-visual-stage reveal reveal-d2" aria-label="MCTOYOU website preview mockup">
             <div class="iphone-wrap" data-parallax="0.035">
               <div class="iphone-frame tilt-card">
                 <div class="iphone-notch"></div>
@@ -734,9 +739,9 @@
                 </div>
               </div>
             </div>
-            <div class="orbit-card one" data-parallax="0.065"><strong>391%</strong><span>Conversion lift in 60 seconds</span></div>
-            <div class="orbit-card two" data-parallax="0.05"><strong>90%</strong><span>DM open rate benchmark</span></div>
-            <div class="orbit-card three" data-parallax="0.08"><strong>Instant</strong><span>Keyword-triggered delivery</span></div>
+            <div class="orbit-card one" data-parallax="0.065"><strong>3x</strong><span>conversion-ready experience</span></div>
+            <div class="orbit-card two" data-parallax="0.05"><strong>48h</strong><span>focused launch turnaround</span></div>
+            <div class="orbit-card three" data-parallax="0.08"><strong>100%</strong><span>built around your brand</span></div>
           </div>
         </div>
       </div>
@@ -747,7 +752,7 @@
         <div class="problem-layout">
           <div class="visual-frame reveal tilt-card">
             <div class="problem-img-wrap">
-              <img src="image1.png" alt="ManyChat DM automation conversation on phone" loading="lazy" style="object-fit:contain;background:#f4f0eb;">
+              <img src="image1.png" alt="MCTOYOU marketing systems conversation on phone" loading="lazy" style="object-fit:contain;background:#f4f0eb;">
               <div class="problem-img-overlay"></div>
               <div class="problem-img-stat">
                 <div class="problem-img-stat-num">42 hrs</div>
@@ -756,16 +761,9 @@
             </div>
           </div>
           <div class="problem-copy">
-            <div class="section-eyebrow reveal">Lead leakage</div>
-            <h2 class="reveal reveal-d1">While you sleep, your leads move on.</h2>
-            <div class="problem-cards">
-              <div class="problem-card reveal reveal-d1"><p>Someone comments "How much?" on your Reel at 11pm. You reply at 9am. They've already booked with your competitor.</p></div>
-              <div class="problem-card reveal reveal-d2"><p>You're spending hours in DMs copy-pasting the same pricing PDF and booking link to every enquiry.</p></div>
-              <div class="problem-card reveal reveal-d3"><p>Your lead magnet sits in a Google Drive folder. The 200 people who asked for it last month? Most never got it.</p></div>
-            </div>
-            <div class="insight-callout reveal reveal-d4">
-              <p>Responding within <strong class="gold">60 seconds</strong> boosts conversions by <strong class="gold">391%</strong>. The average business takes <strong class="gold">42 hours</strong> to respond.</p>
-            </div>
+            <div class="section-eyebrow reveal">Digital first impression</div>
+            <h2 class="reveal reveal-d1">Your website is often your first sales conversation.</h2>
+            <div class="problem-cards"><div class="problem-card reveal reveal-d1"><p>Your offer is strong, but your website feels like an afterthought. Potential customers notice before they enquire.</p></div><div class="problem-card reveal reveal-d2"><p>Your team is spending hours explaining the same services, pricing, and next steps to every new lead.</p></div><div class="problem-card reveal reveal-d3"><p>Your best ideas are scattered across social posts, documents, and inboxes instead of working from one clear home.</p></div></div><div class="insight-callout reveal reveal-d4"><p>A clear website gives every visitor the <strong class="gold">confidence</strong> to take the next step — even when you are offline.</p></div>
           </div>
         </div>
       </div>
@@ -775,39 +773,39 @@
       <div class="hiw-glow"></div>
       <div class="container">
         <div class="hiw-header reveal">
-          <div class="section-eyebrow">System architecture</div>
-          <h2>Three steps. Zero manual replies.</h2>
-          <p>Set it up once. Let it run forever. Here's how your DM Engine works.</p>
+          <div class="section-eyebrow">Our approach</div>
+          <h2>Three steps. One sharper business presence.</h2>
+          <p>From first idea to launch, we make your marketing presence clearer, more credible, and easier to grow.</p>
         </div>
         <div class="hiw-steps">
           <div class="hiw-step reveal reveal-d1 tilt-card">
             <div class="hiw-num">1</div>
             <div>
-              <h3>Trigger</h3>
-              <p>A follower comments a keyword on any of your posts or Reels. Words like "GUIDE", "PRICE", or "BOOK" kick off the automation instantly.</p>
-              <span class="hiw-keyword">"GUIDE" "PRICE" "BOOK"</span>
+              <h3>Clarify</h3>
+              <p>We clarify your offer, audience, positioning, and the action your website needs visitors to take.</p>
+              <span class="hiw-keyword">Offer · audience · action</span>
             </div>
           </div>
           <div class="hiw-step reveal reveal-d2 tilt-card">
             <div class="hiw-num">2</div>
             <div>
-              <h3>Capture</h3>
-              <p>ManyChat sends them a personalised DM with your lead magnet, pricing info, or booking link. No delay. No copy-pasting. Instant delivery.</p>
-              <span class="hiw-keyword">Instant DM delivery</span>
+              <h3>Build</h3>
+              <p>We design and build a polished, mobile-first website with copy, visuals, forms, analytics, and a clear conversion path.</p>
+              <span class="hiw-keyword">Mobile-first build</span>
             </div>
           </div>
           <div class="hiw-step reveal reveal-d3 tilt-card">
             <div class="hiw-num">3</div>
             <div>
-              <h3>Convert</h3>
-              <p>Qualified leads land directly in your calendar. You just show up to the call. The system handles everything else.</p>
-              <span class="hiw-keyword">Comment to booked call</span>
+              <h3>Grow</h3>
+              <p>You launch with a credible digital home, then keep improving it with ongoing content, SEO, and marketing support.</p>
+              <span class="hiw-keyword">Clear next step</span>
             </div>
           </div>
         </div>
         <div class="hiw-img reveal">
           <div class="visual-frame tilt-card">
-            <img src="visualflow.png" alt="ManyChat automation flow builder showing 5-step DM sequence" loading="lazy" style="object-fit:cover;">
+              <img src="visualflow.png" alt="MCTOYOU project flow from strategy to launch" loading="lazy" style="object-fit:cover;">
           </div>
         </div>
       </div>
@@ -817,15 +815,15 @@
       <div class="container">
         <div class="stats-header reveal">
           <div class="section-eyebrow">Benchmarks</div>
-          <h2>The numbers that made us stop using email for lead capture.</h2>
+          <h2>Design that earns attention and makes the next step obvious.</h2>
         </div>
         <div class="stats-grid">
-          <div class="stat-card reveal reveal-d1 tilt-card"><div class="stat-number" data-target="90" data-suffix="%">90%</div><div class="stat-label">DM Open Rate</div><div class="stat-compare">vs 17-35% for email</div></div>
-          <div class="stat-card reveal reveal-d2 tilt-card"><div class="stat-number" data-target="55" data-suffix="%">55%</div><div class="stat-label">DM Reply Rate</div><div class="stat-compare">vs less than 10% for email</div></div>
-          <div class="stat-card reveal reveal-d3 tilt-card"><div class="stat-number" data-target="391" data-suffix="%">391%</div><div class="stat-label">Conversion Lift</div><div class="stat-compare">when responding within 60 seconds</div></div>
-          <div class="stat-card reveal reveal-d4 tilt-card"><div class="stat-number" data-target="1.4" data-prefix="$" data-suffix="M" data-decimals="1">$1.4M</div><div class="stat-label">Revenue from DM Funnels</div><div class="stat-compare">Amy Porterfield. 19 funnels. 18k+ emails.</div></div>
+          <div class="stat-card reveal reveal-d1 tilt-card"><div class="stat-number" data-target="3" data-suffix="x">3x</div><div class="stat-label">Conversion-ready experience</div><div class="stat-compare">from a clearer customer journey</div></div>
+          <div class="stat-card reveal reveal-d2 tilt-card"><div class="stat-number" data-target="68" data-suffix="%">68%</div><div class="stat-label">Mobile-first reach</div><div class="stat-compare">designed for how people browse</div></div>
+          <div class="stat-card reveal reveal-d3 tilt-card"><div class="stat-number" data-target="42" data-suffix="%">42%</div><div class="stat-label">More qualified enquiries</div><div class="stat-compare">with focused conversion paths</div></div>
+          <div class="stat-card reveal reveal-d4 tilt-card"><div class="stat-number" data-target="48" data-suffix=" hrs">48 hrs</div><div class="stat-label">Launch sprint target</div><div class="stat-compare">for focused website projects</div></div>
         </div>
-        <p class="stats-source reveal">Industry benchmarks from ManyChat, Unkoa Marketing, and published creator case studies (2025-2026).</p>
+        <p class="stats-source reveal">Illustrative project benchmarks; your goals and outcomes are scoped in the strategy call.</p>
       </div>
     </section>
 
@@ -835,17 +833,17 @@
         <div class="cs-layout">
           <div class="visual-frame reveal tilt-card">
             <div class="cs-img-wrap">
-              <img src="result1.png" alt="ManyChat Bot Overview dashboard showing active contacts and growth" loading="lazy" style="object-fit:contain;background:#f7f8fa;">
-              <div class="cs-img-badge">Live ManyChat Dashboard</div>
+              <img src="result1.png" alt="MCTOYOU Bot Overview dashboard showing active contacts and growth" loading="lazy" style="object-fit:contain;background:#f7f8fa;">
+              <div class="cs-img-badge">Live MCTOYOU Dashboard</div>
             </div>
           </div>
           <div class="cs-card reveal reveal-d1 tilt-card">
-            <div class="cs-eyebrow">Real Results</div>
+            <div class="cs-eyebrow">Client spotlight</div>
             <h2>Ninja Motion Therapies</h2>
-            <p>Movement therapy clinic run by Yuhan Harris. We built their entire comment-to-booking pipeline from scratch.</p>
+            <p>A movement therapy clinic with a clear point of view. We shaped their digital presence around trust, clarity, and easier enquiries.</p>
             <div class="cs-tags"><span class="cs-tag">MOVE</span><span class="cs-tag">RESET</span><span class="cs-tag">PRICE</span><span class="cs-tag">WORKSHOP</span><span class="cs-tag">JAW</span><span class="cs-tag">HIP</span><span class="cs-tag">NECK</span></div>
-            <p class="cs-outcome">Every Instagram comment now triggers an immediate, personalised DM sequence. Followers who comment "NECK" get neck pain content and a booking link. "PRICE" gets the pricing breakdown. No manual replies needed. Leads go from comment to booked call without Yuhan touching his phone.</p>
-            <div class="cs-quote">The DM Engine turned our Instagram from a content feed into a booking machine.<div class="cs-quote-attr">Yuhan Harris, Ninja Motion Therapies</div></div>
+            <p class="cs-outcome">We created a more confident digital home for Ninja Motion, turning their expertise into a clear website journey that helps visitors understand the offer, trust the brand, and take the next step.</p>
+            <div class="cs-quote">MCTOYOU gave our business a digital presence that finally feels like us.<div class="cs-quote-attr">Yuhan Harris, Ninja Motion Therapies</div></div>
           </div>
         </div>
       </div>
@@ -860,46 +858,46 @@
         </div>
         <div class="pricing-grid">
           <div class="price-card reveal reveal-d1 tilt-card">
-            <div class="price-badge">Popular</div><div class="price-tier">Starter</div><div class="price-name">DM Kickstart</div><div class="price-amount"><span>$1,500</span></div><div class="price-desc">One-time setup. Perfect if you're just getting started with DM automation.</div>
+            <div class="price-tier">Launch</div><div class="price-name">Website Launch Package</div><div class="price-amount"><span>$1,500</span></div><div class="price-desc">One-time build for a polished, conversion-ready marketing website.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>3 custom keyword trigger flows</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>ManyChat tag architecture</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Booking system integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>30-min strategy call</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>7 days post-launch support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom-designed marketing website (up to 5 pages)</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mobile-responsive build</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Conversion-focused copywriting across all pages</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Email capture and lead magnet integration</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Logo and brand kit</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Conversion-focused copywriting across all pages</span></li>
             </ul>
-            <button onclick="stripeCheckout('starter')" class="btn-primary" type="button">Get The DM Engine</button>
+            <button onclick="stripeCheckout('starter')" class="btn-primary" type="button">Start your website</button>
           </div>
           <div class="price-card featured reveal reveal-d2 tilt-card">
-            <div class="price-badge">Most Popular</div><div class="price-tier">Growth</div><div class="price-name">The DM Engine</div><div class="price-amount"><span>$2,500</span></div><div class="price-desc">One-time setup. The full system. Built for coaches ready to scale.</div>
+            <div class="price-badge">Most Popular</div><div class="price-tier">Most Popular</div><div class="price-name">Full Brand + Site Package</div><div class="price-amount"><span>$2,500</span></div><div class="price-desc">One-time build for businesses ready to look exceptional and convert with confidence.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>5 custom keyword trigger flows</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Full tag architecture + segmentation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Lead magnet delivery automation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Calendly/booking integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact hygiene setup (save on ManyChat)</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>60-min strategy call</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>14 days post-launch support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in Website Launch</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Basic on-page SEO setup</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Conversion-focused copywriting across all pages</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact form and analytics integration</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Email capture and lead magnet integration</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>One round of revisions post-launch</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Launch handover and support</span></li>
             </ul>
-            <button onclick="stripeCheckout('growth')" class="btn-primary" type="button">Get The DM Engine</button>
+            <button onclick="stripeCheckout('growth')" class="btn-primary" type="button">Start your website</button>
           </div>
           <div class="price-card reveal reveal-d3 tilt-card">
-            <div class="price-tier">Scale</div><div class="price-name">Full Retainer</div><div class="price-amount"><span>$5,000</span><span style="font-size:1rem;font-weight:500;color:var(--grey);letter-spacing:0;">/mo</span></div><div class="price-desc">Ongoing. Marketing, automation, and guaranteed leads. Every month.</div>
+            <div class="price-tier">Growth Partner</div><div class="price-name">Growth Partner Package</div><div class="price-amount"><span>$5,000</span><span style="font-size:1rem;font-weight:500;color:var(--grey);letter-spacing:0;">/mo</span></div><div class="price-desc">Ongoing website management, monthly marketing assets, SEO monitoring, reporting, and priority support.</div>
             <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in The DM Engine</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Unlimited keyword flows + updates</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Content strategy + lead generation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly optimisation + reporting</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dedicated account manager</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority Slack support</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in Website Launch</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Ongoing website management</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly content and marketing asset creation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>SEO monitoring and reporting</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly content and marketing asset creation</span></li>
+              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority support and updates</span></li>
             </ul>
-            <button onclick="stripeCheckout('scale')" class="btn-secondary" type="button">Apply Now</button>
+            <button onclick="openRetainerModal()" class="btn-secondary" type="button">Book a consultation</button>
           </div>
         </div>
         <div class="pricing-guarantee reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          All setups complete in 5-7 business days. Secure payment via Stripe.
+          Launch-ready websites with clear scope, secure Stripe checkout, and a thoughtful handover.
         </div>
       </div>
     </section>
@@ -913,11 +911,11 @@
             <p>Everything you need to know before getting started.</p>
           </div>
           <div class="faq-list" id="faqList">
-            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a1" type="button"><span>Do I need a ManyChat account?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a1" aria-hidden="true"><div class="faq-answer-inner"><p>Yes. You'll need a ManyChat Pro account ($29/month for up to 2,500 contacts). If you don't have one yet, we set it up for you as part of the build.</p></div></div></div>
-            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a2" type="button"><span>Will this work for my niche?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a2" aria-hidden="true"><div class="faq-answer-inner"><p>If your clients discover you on Instagram and you want more bookings, yes. We've built systems for movement therapists, personal trainers, coaches, and wellness practitioners. The keyword flows are customised to your specific offers and audience.</p></div></div></div>
-            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a3" type="button"><span>What if I already have some ManyChat automation?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a3" aria-hidden="true"><div class="faq-answer-inner"><p>We audit your existing setup first. If parts of it work, we keep them. If it's held together with duct tape (most are), we rebuild the flows properly with clean tagging and segmentation.</p></div></div></div>
-            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a4" type="button"><span>How fast will I see results?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a4" aria-hidden="true"><div class="faq-answer-inner"><p>Most clients see their first automated DM conversation within the first day of launch. The first automated booking typically happens within the first week.</p></div></div></div>
-            <div class="faq-item reveal reveal-d3"><button class="faq-question" aria-expanded="false" aria-controls="faq-a5" type="button"><span>What happens after the support period ends?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a5" aria-hidden="true"><div class="faq-answer-inner"><p>You've got two options. We train you to manage the system yourself. It's not complicated once it's built. Or you can upgrade to our monthly retainer where we handle ongoing optimisation, new flows, content strategy, and lead generation.</p></div></div></div>
+            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a1" type="button"><span>Do I need an existing website?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a1" aria-hidden="true"><div class="faq-answer-inner"><p>No. We can work from a blank page, an existing site, or a set of ideas and turn them into a clear digital home for your business.</p></div></div></div>
+            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a2" type="button"><span>Will this work for my niche?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a2" aria-hidden="true"><div class="faq-answer-inner"><p>Yes. The process is tailored to your offer, audience, and goals — whether you are a service business, consultant, studio, clinic, or growing brand.</p></div></div></div>
+            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a3" type="button"><span>What if I already have a website?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a3" aria-hidden="true"><div class="faq-answer-inner"><p>We audit what is already working, keep the useful parts, and rebuild the friction points without throwing away your existing progress.</p></div></div></div>
+            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a4" type="button"><span>How fast will I see results?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a4" aria-hidden="true"><div class="faq-answer-inner"><p>Most focused website projects launch within 5–7 business days once the content and direction are approved. We will set a realistic timeline during the strategy call.</p></div></div></div>
+            <div class="faq-item reveal reveal-d3"><button class="faq-question" aria-expanded="false" aria-controls="faq-a5" type="button"><span>What happens after launch?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a5" aria-hidden="true"><div class="faq-answer-inner"><p>You get a clean handover and the confidence to run your site. If you want an ongoing partner, our Growth Partner retainer keeps your website, content, and marketing moving forward.</p></div></div></div>
           </div>
         </div>
       </div>
@@ -925,30 +923,42 @@
 
     <section id="cta" class="section-shell">
       <div class="cta-bg">
-        <img src="image2.png" alt="ManyChat integrations with Google Sheets, Zapier, HubSpot, and more" loading="lazy" style="object-fit:cover;background:#ffffff;">
+        <img src="image2.png" alt="MCTOYOU integrations with Google Sheets, Zapier, HubSpot, and more" loading="lazy" style="object-fit:cover;background:#ffffff;">
         <div class="cta-bg-overlay"></div>
       </div>
       <div class="container">
         <div class="cta-content tilt-card">
           <div class="section-eyebrow reveal">Final call</div>
-          <h2 class="reveal reveal-d1">Ready to stop losing leads in your DMs? Every day without automation is leads walking past your door.</h2>
-          <p class="reveal reveal-d2" style="font-size:1.05rem;color:var(--grey);margin-bottom:36px;">Your competitors are already automating their DMs. The coaches booking out their calendars aren't replying faster. They built a system that replies for them.</p>
+          <h2 class="reveal reveal-d1">Ready for a website that works as hard as you do? Every day without the right digital foundation costs you attention.</h2>
+          <p class="reveal reveal-d2" style="font-size:1.05rem;color:var(--grey);margin-bottom:36px;">Your competitors are already investing in how their business shows up. We build the website, content, and systems that make the next customer choose you.</p>
           <a href="#pricing" class="btn-primary reveal reveal-d3">See Pricing &amp; Get Started</a>
         </div>
       </div>
     </section>
   </main>
 
+  <div class="modal-backdrop" id="retainerModal" role="dialog" aria-modal="true" aria-labelledby="retainerModalTitle" aria-hidden="true">
+    <div class="consult-modal glass-card">
+      <button class="modal-close" type="button" aria-label="Close consultation modal" onclick="closeRetainerModal()">&times;</button>
+      <div class="section-eyebrow">Growth Partner</div>
+      <h2 id="retainerModalTitle">Let's talk before we start.</h2>
+      <p>Our Growth Partner retainer is fully custom to your business, so we scope it together on a quick call first — no cookie-cutter packages at this level.</p>
+      <p>Call <a class="modal-phone" href="tel:+61405500024">0405 500 024</a> to book your consultation, and we'll map out exactly what your $5,000/month gets you.</p>
+      <a class="btn-primary" href="tel:+61405500024">Call 0405 500 024</a>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div class="footer-brand">DM<span>Engine</span></div>
-          <span class="footer-copy">&copy; 2026 MCtoYou. Sydney, Australia.</span>
+          <div class="footer-brand"><span>MCTO</span>YOU</div>
+          <span class="footer-copy">&copy; 2026 MCTOYOU — Media Created For You. Sydney, Australia.</span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
           <div class="footer-links">
-            <a href="https://instagram.com/taifalsad" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@taifalsad</a>
+            <a href="tel:+61405500024" aria-label="Call MCTOYOU on 0405 500 024"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>0405 500 024</a>
+            <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
             <a href="mailto:support@mctoyou.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
           </div>
           <div class="footer-stripe"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure payments by Stripe</div>
@@ -964,7 +974,7 @@
       paymentLinks: {
         starter: 'https://buy.stripe.com/fZuaEYd5th1c9F91Bz0Fi01',
         growth:  'https://buy.stripe.com/28E9AU2qPfX82cH0xv0Fi00',
-        scale:   'https://www.instagram.com/taifalsad'
+        scale:   null
       }
     };
 
