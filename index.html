@@ -459,6 +459,21 @@
     .price-badge { position: absolute; top: 18px; right: 18px; z-index: 3; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #07111f; font-family: var(--font-mono); font-size: 0.63rem; font-weight: 800; padding: 7px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 14px 38px rgba(200,146,42,0.24); }
     .price-tier, .price-name, .price-amount, .price-desc, .price-features, .price-card .btn-primary, .price-card .btn-secondary { position: relative; z-index: 2; }
     .price-tier { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal-light); font-weight: 700; margin-bottom: 12px; }
+    .price-tier, .price-name, .price-desc, .stat-label, .footer-copy, .footer-links a { overflow-wrap: anywhere; }
+    .hiw-keyword { max-width: 100%; white-space: normal; line-height: 1.45; }
+    .cta-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: clamp(28px, 5vw, 72px); padding: clamp(28px, 5vw, 60px); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius-xl); background: linear-gradient(145deg, rgba(19,35,55,0.82), rgba(7,17,31,0.72)); box-shadow: var(--shadow-xl); overflow: hidden; }
+    .cta-inner::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 84% 18%, rgba(16,179,175,0.18), transparent 32%), radial-gradient(circle at 12% 100%, rgba(240,190,85,0.10), transparent 34%); }
+    .cta-inner > div { position: relative; z-index: 1; }
+    .cta-inner > div:first-child { max-width: 720px; }
+    .cta-inner h2 { margin-bottom: 16px; }
+    .cta-inner p { margin-bottom: 0; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; flex: 0 0 auto; }
+    .cta-actions .btn-primary, .cta-actions .btn-secondary { white-space: nowrap; }
+    .footer-top, .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; }
+    .footer-top { padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-bottom { padding-top: 20px; color: var(--grey-dark); font-size: 0.76rem; }
+    .footer-bottom span:last-child { text-align: right; }
+
     .price-name { font-family: var(--font-display); font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 14px; letter-spacing: -0.05em; }
     .price-amount { font-family: var(--font-display); font-size: clamp(2.7rem, 5vw, 4rem); font-weight: 800; color: var(--white); margin-bottom: 8px; line-height: 0.95; letter-spacing: -0.07em; }
     .price-amount span { color: var(--gold-light); }
@@ -652,10 +667,13 @@
       .faq-question { padding: 19px 18px; font-size: 0.94rem; gap: 14px; }
       .faq-question::after { flex: 0 0 28px; width: 28px; height: 28px; font-size: 1rem; }
       .faq-answer-inner { padding: 0 18px 19px; }
-      .cta-card { border-radius: 26px; }
-      .cta-content { padding: 34px 18px; }
-      .cta-visual { opacity: 0.26; width: 72%; right: -34%; }
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+      .cta-inner { flex-direction: column; align-items: stretch; gap: 26px; padding: 28px 20px; border-radius: 24px; }
+      .cta-inner h2 { font-size: clamp(2rem, 10.8vw, 3.05rem); }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn-primary, .cta-actions .btn-secondary { width: 100%; }
+      .footer-top, .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+      .footer-bottom span:last-child { text-align: center; }
+      .footer-links { max-width: 100%; }
       .footer-inner > div:last-child { align-items: center !important; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
       .cursor-aura { display: none; }
@@ -664,7 +682,8 @@
     @media (max-width: 374px) {
       .container { width: calc(100% - 22px); }
       .nav .container { width: calc(100% - 18px); }
-      .nav-logo { font-size: 0.92rem; }
+      .nav-logo { max-width: calc(100% - 54px); overflow: hidden; text-overflow: ellipsis; font-size: 0.92rem; }
+      .nav .container { padding-left: 11px; padding-right: 8px; }
       .hero-content h1 { font-size: clamp(1.95rem, 9.05vw, 2.18rem); letter-spacing: -0.052em; line-height: 1.06; }
       .hero-badge { font-size: 0.58rem; letter-spacing: 0.09em; }
       .iphone-wrap { max-width: 270px; }
