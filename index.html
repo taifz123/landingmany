@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCTOYOU — Media Created For You</title>
-  <meta name="description" content="MCTOYOU creates premium marketing websites, conversion-focused content, and ongoing growth support for ambitious businesses.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Taif Al Saddawi — AI Automation Engineer</title>
+  <meta name="description" content="Taif Al Saddawi is an AI automation engineer building LLM workflows, conversational automation, Python media pipelines, and full-stack web applications from Sydney, Australia.">
   <link rel="canonical" href="https://mctoyou.com">
-  <meta property="og:title" content="MCTOYOU — Media Created For You">
-  <meta property="og:description" content="Premium marketing websites and ongoing growth support, created for your business.">
+  <meta property="og:title" content="Taif Al Saddawi — AI Automation Engineer">
+  <meta property="og:description" content="AI automation engineer building LLM workflows, conversational systems, media pipelines, and full-stack products.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mctoyou.com">
   <meta name="twitter:card" content="summary_large_image">
@@ -507,8 +508,6 @@
     .footer-links a { font-size: 0.82rem; color: var(--grey-dark); display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
     .footer-links a:hover { color: var(--teal-light); }
     .footer-links svg { width: 16px; height: 16px; }
-    .footer-stripe { margin-top: 10px; display: flex; align-items: center; gap: 8px; font-size: 0.73rem; color: var(--grey-dark); justify-content: flex-end; }
-    .footer-stripe svg { width: 14px; height: 14px; }
 
     .tilt-card { transform-style: preserve-3d; }
 
@@ -531,26 +530,16 @@
     .section-shell { padding-top: clamp(112px, 14vw, 168px); padding-bottom: clamp(112px, 14vw, 168px); }
     .hero-fit { color: var(--grey); font-size: 0.92rem; max-width: 500px; margin: -12px 0 22px; }
     .glass-card, .stat-card, .price-card, .cs-card, .testimonial-card { background: linear-gradient(145deg, rgba(19,35,55,0.78), rgba(7,17,31,0.72)); border-color: rgba(255,255,255,0.12); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
-    .placeholder-card { display: grid; gap: 7px; align-content: center; min-height: 104px; padding: 18px; border: 1px dashed rgba(115,230,220,0.38); border-radius: 16px; background: linear-gradient(135deg, rgba(16,179,175,0.08), rgba(240,190,85,0.06)); color: var(--grey); text-align: center; }
-    .placeholder-card span { color: var(--teal-light); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-    .placeholder-card strong { color: var(--white); font-size: 0.95rem; }
-    .placeholder-card small { color: var(--grey-dark); font-size: 0.72rem; line-height: 1.45; }
-    .hero-placeholder { position: absolute; top: 2%; left: -26%; width: 220px; z-index: 1; transform: rotate(-4deg); opacity: 0.88; }
-    .step-placeholder { margin-top: 18px; min-height: 86px; text-align: left; }
-    .service-placeholder { max-width: 360px; margin: 0 auto 26px; }
     .section-heading-centered { max-width: 640px; margin: 0 auto 48px; text-align: center; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
     .testimonial-card { padding: 22px; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
-    .testimonial-placeholder { min-height: 110px; margin-bottom: 22px; }
     .testimonial-card blockquote { margin: 0 0 14px; color: var(--white); font-size: 1rem; line-height: 1.55; }
     .testimonial-card cite { color: var(--grey-dark); font-size: 0.78rem; font-style: normal; }
-    .founder-placeholder { max-width: 250px; margin-top: 16px; min-height: 72px; text-align: left; }
     .sticky-call { position: fixed; right: 24px; bottom: 24px; z-index: 60; display: inline-flex; align-items: center; gap: 9px; padding: 13px 18px; border: 1px solid rgba(115,230,220,0.32); border-radius: 999px; color: var(--white); background: rgba(7,17,31,0.86); box-shadow: 0 12px 32px rgba(0,0,0,0.32), 0 0 22px rgba(16,179,175,0.13); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); font-size: 0.8rem; font-weight: 800; }
     .sticky-call:hover { color: var(--dark); background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); }
     .sticky-call-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-light); box-shadow: 0 0 12px var(--teal-light); }
     .btn-primary { box-shadow: 0 10px 28px rgba(240,190,85,0.18); }
     .btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px) scale(1.02); }
-    @media (max-width: 767px) { .hero-placeholder { position: relative; inset: auto; width: 100%; margin: 0 auto 18px; transform: none; order: -1; } .testimonials-grid { grid-template-columns: 1fr; } .sticky-call { right: 14px; bottom: 14px; } .founder-placeholder { max-width: none; } }
 
     @media (max-width: 1023px) {
       .container { width: min(100% - 40px, 900px); }
@@ -669,7 +658,6 @@
       .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
       .footer-inner > div:last-child { align-items: center !important; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-      .footer-stripe { justify-content: center; }
       .cursor-aura { display: none; }
     }
 
@@ -698,481 +686,66 @@
 <body>
   <a class="skip-link" href="#hero">Skip to content</a>
   <div class="loader" id="pageLoader" aria-hidden="true"><div class="loader-core"></div></div>
-  <div class="visual-noise" aria-hidden="true"></div>
-  <div class="ambient-orb orb-a" aria-hidden="true"></div>
-  <div class="ambient-orb orb-b" aria-hidden="true"></div>
-  <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
+  <div class="visual-noise" aria-hidden="true"></div><div class="ambient-orb orb-a" aria-hidden="true"></div><div class="ambient-orb orb-b" aria-hidden="true"></div><div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-progress scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
     <div class="container">
-      <a href="#hero" class="nav-logo"><span>MCTO</span>YOU</a>
+      <a href="#hero" class="nav-logo"><span>TAIF</span> AL SADDAWI</a>
       <div class="nav-links" id="navLinks">
-        <a href="#hero">Home</a>
-        <a href="#how-it-works">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="tel:+61405500024" class="nav-cta-link">Call 0405 500 024</a>
+        <a href="#hero">Profile</a><a href="#how-it-works">Skills</a><a href="#problem">Experience</a><a href="#pricing">Projects</a><a href="#contact" class="nav-cta-link">Let's connect</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <main id="hero">
     <div class="orbital-ring" aria-hidden="true"></div>
-    <section class="section-shell" aria-labelledby="hero-title">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-badge reveal"><span class="hero-badge-dot"></span> Media Created For You</div>
-            <h1 id="hero-title" class="reveal reveal-d1"><span class="hero-line">A website that</span> <span class="hero-line">actually gets</span> <em><span class="hero-line">you clients.</span></em></h1>
-            <p class="hero-sub reveal reveal-d2">MCTOYOU designs and builds marketing websites for coaches, wellness brands, and small businesses — done for you, live in weeks, not months.</p><p class="hero-fit reveal reveal-d2">Built for coaches, therapists, studios, and service businesses that need a site that converts.</p>
-            <div class="hero-buttons reveal reveal-d3">
-              <a href="#pricing" class="btn-primary">See pricing</a>
-            </div>
-            <div class="hero-proof reveal reveal-d4"><div class="hero-proof-avatars" aria-hidden="true"><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));color:var(--white);">MC</div><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);">TY</div></div><span>Media created for you. Built for clarity, confidence, and growth.</span></div>
-            <div class="hero-metrics reveal reveal-d4" aria-label="MCTOYOU proof points"><div class="hero-metric"><strong>5</strong><span>page website builds</span></div><div class="hero-metric"><strong>48</strong><span>hour launch sprints</span></div><div class="hero-metric"><strong>1</strong><span>growth partner</span></div></div>
-          </div>
+    <section class="section-shell" aria-labelledby="hero-title"><div class="container"><div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge reveal"><span class="hero-badge-dot"></span> Sydney · Australia</div>
+        <h1 id="hero-title" class="reveal reveal-d1"><span class="hero-line">I build systems</span> <span class="hero-line">that make complex</span> <em><span class="hero-line">work feel simple.</span></em></h1>
+        <p class="hero-sub reveal reveal-d2">AI automation engineer and independent operator building LLM-powered workflows, conversational automation, Python media pipelines, and full-stack web applications.</p>
+        <div class="hero-buttons reveal reveal-d3"><a href="mailto:taifalsaddawi@gmail.com" class="btn-primary">Start a conversation</a><a href="#experience" class="btn-secondary">View experience</a></div>
+        <div class="hero-proof reveal reveal-d4"><div class="hero-proof-avatars" aria-hidden="true"><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));color:var(--white);">TA</div><div class="hero-proof-avatar" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--dark);">AI</div></div><span>8+ years building business systems with a UX design foundation.</span></div>
+        <div class="hero-metrics reveal reveal-d4" aria-label="Professional highlights"><div class="hero-metric"><strong>8+</strong><span>years building systems</span></div><div class="hero-metric"><strong>LLM</strong><span>workflow architecture</span></div><div class="hero-metric"><strong>UX</strong><span>informed delivery</span></div></div>
+      </div>
+      <div class="hero-visual-stage reveal reveal-d2" aria-label="AI workflow conversation mockup"><div class="iphone-wrap" data-parallax="0.035"><div class="iphone-frame tilt-card"><div class="iphone-notch"></div><div class="iphone-screen"><div class="iphone-header"><div class="iphone-avatar-circle">TA</div><div><div class="iphone-name">Taif's Automation Lab</div><div class="iphone-status">Building now</div></div></div><div class="chat-bubbles"><div class="bubble bubble-user">Can we automate this workflow?</div><div class="bubble bubble-brand">Yes — first we map the problem, inputs, and desired outcome.</div><div class="bubble bubble-user">What happens after the handoff?</div><div class="bubble bubble-brand bubble-link">LLM workflow · shipped</div><div class="bubble bubble-brand">Reusable systems, clear interfaces, and less repetitive work.</div><div class="typing-indicator" aria-label="Typing indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div></div></div></div><div class="orbit-card one" data-parallax="0.065"><strong>8+</strong><span>years of systems work</span></div><div class="orbit-card two" data-parallax="0.05"><strong>LLM</strong><span>agents + workflows</span></div><div class="orbit-card three" data-parallax="0.08"><strong>UX</strong><span>user-centred foundation</span></div></div>
+    </div></div></section>
 
-          <div class="hero-visual-stage reveal reveal-d2" aria-label="MCTOYOU website preview mockup">
-            <div class="placeholder-card hero-placeholder reveal" role="img" aria-label="Placeholder: Before/after split image of a client website"><span>PLACEHOLDER</span><strong>Before/after website transformation</strong><small>Replace with a side-by-side view of a client’s outdated site and new MCTOYOU-built website.</small></div>
-            <div class="iphone-wrap" data-parallax="0.035">
-              <div class="iphone-frame tilt-card">
-                <div class="iphone-notch"></div>
-                <div class="iphone-screen">
-                  <div class="iphone-header">
-                    <div class="iphone-avatar-circle">NM</div>
-                    <div>
-                    <div class="iphone-name">MCTOYOU Studio</div>
-                      <div class="iphone-status">Active now</div>
-                    </div>
-                  </div>
-                  <div class="chat-bubbles">
-                    <div class="bubble bubble-user">WEBSITE</div>
-                    <div class="bubble bubble-brand">Hey! We can help turn your offer into a clearer, more confident website.</div>
-                    <div class="bubble bubble-brand">Here’s the project guide: strategy, design, build, and launch support.</div>
-                    <div class="bubble bubble-brand bubble-link">MCTOYOU-project-guide.pdf</div>
-                    <div class="bubble bubble-brand">Want to talk through your next step? Tap below to book a consultation.</div>
-                    <div class="typing-indicator" aria-label="Typing indicator">
-                      <div class="typing-dot"></div>
-                      <div class="typing-dot"></div>
-                      <div class="typing-dot"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="orbit-card one" data-parallax="0.065"><strong>3x</strong><span>conversion-ready experience</span></div>
-            <div class="orbit-card two" data-parallax="0.05"><strong>48h</strong><span>focused launch turnaround</span></div>
-            <div class="orbit-card three" data-parallax="0.08"><strong>100%</strong><span>built around your brand</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="how-it-works" class="section-shell"><div class="hiw-glow"></div><div class="container"><div class="hiw-header reveal"><div class="section-eyebrow">Technical competencies</div><h2>From problem definition to a working system.</h2><p>Practical engineering across AI, development, automation, media, infrastructure, and design.</p></div><div class="hiw-steps">
+      <div class="hiw-step reveal reveal-d1 tilt-card"><div class="hiw-num">01</div><div><h3>AI &amp; LLMs</h3><p>Claude API, Claude Code, agents and subagents, prompt engineering, and MCP.</p><span class="hiw-keyword">Reason · orchestrate · automate</span></div></div>
+      <div class="hiw-step reveal reveal-d2 tilt-card"><div class="hiw-num">02</div><div><h3>Development</h3><p>Python, JavaScript / TypeScript, React, Next.js, Vite, Tailwind CSS, Bash, and marketing systems.</p><span class="hiw-keyword">Build · ship · iterate</span></div></div>
+      <div class="hiw-step reveal reveal-d3 tilt-card"><div class="hiw-num">03</div><div><h3>Automation &amp; media</h3><p>ManyChat, Make.com, webhooks, APIs, Whisper, FFmpeg, and Pillow for repeatable delivery.</p><span class="hiw-keyword">Connect · render · repeat</span></div></div>
+    </div></div></section>
 
+    <section id="problem" class="section-shell"><div class="container"><div class="problem-layout"><div class="visual-frame reveal tilt-card"><div class="problem-img-wrap" style="background:linear-gradient(145deg,#0c2534,#07111f);"><div style="width:82%;height:74%;border:1px solid rgba(16,179,175,.35);border-radius:18px;padding:18px;background:linear-gradient(145deg,rgba(16,179,175,.13),rgba(255,255,255,.03));box-shadow:0 24px 80px rgba(0,0,0,.4);"><div style="height:8px;width:36%;background:var(--gold-light);border-radius:99px;margin-bottom:22px;opacity:.9"></div><div style="display:grid;gap:11px"><div style="height:12px;width:82%;background:rgba(248,250,252,.18);border-radius:99px"></div><div style="height:12px;width:61%;background:rgba(248,250,252,.12);border-radius:99px"></div><div style="height:90px;border:1px dashed rgba(16,179,175,.4);border-radius:12px;margin-top:10px"></div><div style="height:12px;width:48%;background:rgba(240,190,85,.42);border-radius:99px"></div></div></div><div class="problem-img-stat"><div class="problem-img-stat-num">E2E</div><div class="problem-img-stat-label">Scope · build · handover</div></div></div></div><div class="problem-copy" id="experience"><div class="section-eyebrow reveal">Professional experience</div><h2 class="reveal reveal-d1">Engineering with ownership from the first brief to the final handover.</h2><div class="problem-cards"><div class="problem-card reveal reveal-d1"><p><strong class="gold">Founder &amp; AI Automation Engineer · 2025–Present</strong><br>MCtoYou / Independent · Sydney. Build and operate a productized AI automation service across client systems, from solution design through implementation and delivery.</p></div><div class="problem-card reveal reveal-d2"><p><strong class="gold">Independent Growth &amp; Systems Operator · 2018–2025</strong><br>Self-employed · Multi-client. Delivered automation systems, technical audits, and website builds for health, professional services, and e-commerce clients.</p></div><div class="problem-card reveal reveal-d3"><p>Built reusable Claude Code media skills, conversational flows with lead scoring and booking integrations, React/Vite/Tailwind applications, and cloud GPU rendering environments.</p></div></div><div class="insight-callout reveal reveal-d4"><p>My approach is grounded in <strong class="gold">reducing repetitive manual work</strong> through practical automation and reusable systems.</p></div></div></div></div></section>
 
+    <section id="pricing" class="section-shell"><div class="container"><div class="pricing-header reveal"><div class="section-eyebrow">Selected projects</div><h2>Systems built to be used, not just admired.</h2><p>A selection of practical builds across automation, media pipelines, and infrastructure.</p></div><div class="pricing-grid">
+      <article class="price-card reveal reveal-d1 tilt-card"><div class="price-tier">01 · Python · FFmpeg · Whisper</div><div class="price-name">Claude Code Automation Skills</div><div class="price-desc">Reusable skills for automated video post-production, including transcription with custom terminology prompts and subtitle rendering with dynamic text overlays.</div><ul class="price-features"><li class="price-feature"><span class="price-check">↗</span><span>Domain-aware transcription workflows</span></li><li class="price-feature"><span class="price-check">↗</span><span>Automated subtitles and overlays</span></li></ul><a href="mailto:taifalsaddawi@gmail.com?subject=Claude%20Code%20Automation%20Skills" class="btn-secondary">Discuss the build</a></article>
+      <article class="price-card featured reveal reveal-d2 tilt-card"><div class="price-badge">Featured system</div><div class="price-tier">02 · ManyChat · Webhooks · APIs</div><div class="price-name">Conversational Automation Infrastructure</div><div class="price-desc">Multi-keyword conversation flows with lead scoring, nurture sequences, and third-party booking integrations.</div><ul class="price-features"><li class="price-feature"><span class="price-check">↗</span><span>Keyword triggers and segmentation</span></li><li class="price-feature"><span class="price-check">↗</span><span>Lead scoring and follow-up sequences</span></li></ul><a href="mailto:taifalsaddawi@gmail.com?subject=Conversational%20Automation" class="btn-primary">Start a conversation</a></article>
+      <article class="price-card reveal reveal-d3 tilt-card"><div class="price-tier">03 · Linux · SSH · Blender · CUDA / OptiX</div><div class="price-name">Cloud GPU Render Environment</div><div class="price-desc">Provisioned an RTX 5090 cloud instance, configured remote SSH access, and verified GPU-accelerated Blender rendering.</div><ul class="price-features"><li class="price-feature"><span class="price-check">↗</span><span>Remote infrastructure setup</span></li><li class="price-feature"><span class="price-check">↗</span><span>GPU-accelerated rendering verification</span></li></ul><a href="mailto:taifalsaddawi@gmail.com?subject=Cloud%20GPU%20Render%20Environment" class="btn-secondary">Discuss the build</a></article>
+      <article class="price-card reveal reveal-d4 tilt-card"><div class="price-tier">04 · Python · Pillow · FFmpeg</div><div class="price-name">Procedural Video Render Pipeline</div><div class="price-desc">A code-driven pipeline producing vertical 1080 × 1920 MP4 videos from generated interface mockups, motion graphics, and programmatic compositing.</div><ul class="price-features"><li class="price-feature"><span class="price-check">↗</span><span>Generated interface mockups</span></li><li class="price-feature"><span class="price-check">↗</span><span>Programmatic compositing and export</span></li></ul><a href="mailto:taifalsaddawi@gmail.com?subject=Procedural%20Video%20Render%20Pipeline" class="btn-secondary">Discuss the build</a></article>
+    </div></div></section>
 
+    <section id="stats" class="section-shell"><div class="container"><div class="stats-header reveal"><div class="section-eyebrow">Education &amp; design foundation</div><h2>Technical depth, shaped by how people work.</h2><p>Current student at Western Sydney University studying a Bachelor of Cyber Security &amp; Behaviour, with a professional UX design foundation informing a user-centred approach to digital products and workflows.</p></div><div class="stats-grid"><div class="stat-card reveal reveal-d1"><div class="stat-number" data-target="8" data-suffix="+">0</div><div class="stat-label">Years building business systems</div></div><div class="stat-card reveal reveal-d2"><div class="stat-number" data-target="4">0</div><div class="stat-label">Selected systems in this portfolio</div></div><div class="stat-card reveal reveal-d3"><div class="stat-number">UX</div><div class="stat-label">Design foundation</div></div><div class="stat-card reveal reveal-d4"><div class="stat-number">WSU</div><div class="stat-label">Cyber Security &amp; Behaviour</div></div></div></div></section>
 
-
-
-
-
-    <section id="how-it-works" class="section-shell">
-      <div class="hiw-glow"></div>
-      <div class="container">
-        <div class="hiw-header reveal">
-          <div class="section-eyebrow">Our approach</div>
-          <h2>Three steps. One sharper business presence.</h2>
-          <p>From first idea to launch, we make your marketing presence clearer, more credible, and easier to grow.</p>
-        </div>
-        <div class="hiw-steps">
-          <div class="hiw-step reveal reveal-d1 tilt-card">
-            <div class="hiw-num">1</div>
-            <div>
-              <h3>Clarify</h3>
-              <p>We clarify your offer, audience, positioning, and the action your website needs visitors to take.</p>
-              <span class="hiw-keyword">Offer · audience · action</span><div class="placeholder-card step-placeholder"><span>PLACEHOLDER: Discovery call</span><small>Calendar icon + laptop or strategy-call illustration.</small></div>
-            </div>
-          </div>
-          <div class="hiw-step reveal reveal-d2 tilt-card">
-            <div class="hiw-num">2</div>
-            <div>
-              <h3>Build</h3>
-              <p>We design and build a polished, mobile-first website with copy, visuals, forms, analytics, and a clear conversion path.</p>
-              <span class="hiw-keyword">Mobile-first build</span><div class="placeholder-card step-placeholder"><span>PLACEHOLDER: Design in progress</span><small>Figma-style wireframe transitioning into the live site.</small></div>
-            </div>
-          </div>
-          <div class="hiw-step reveal reveal-d3 tilt-card">
-            <div class="hiw-num">3</div>
-            <div>
-              <h3>Grow</h3>
-              <p>You launch with a credible digital home, then keep improving it with ongoing content, SEO, and marketing support.</p>
-              <span class="hiw-keyword">Clear next step</span><div class="placeholder-card step-placeholder"><span>PLACEHOLDER: Growth dashboard</span><small>Analytics view showing traffic and conversion growth after launch.</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="hiw-img reveal">
-          <div class="visual-frame tilt-card">
-              <img src="visualflow.png" alt="MCTOYOU project flow from strategy to launch" loading="lazy" style="object-fit:cover;">
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="problem" class="section-shell">
-      <div class="container">
-        <div class="problem-layout">
-          <div class="visual-frame reveal tilt-card">
-            <div class="problem-img-wrap">
-              <img src="image1.png" alt="MCTOYOU marketing systems conversation on phone" loading="lazy" style="object-fit:contain;background:#f4f0eb;">
-              <div class="problem-img-overlay"></div>
-              <div class="problem-img-stat">
-                <div class="problem-img-stat-num">42 hrs</div>
-                <div class="problem-img-stat-label">Avg. business response time</div>
-              </div>
-            </div>
-          </div>
-          <div class="problem-copy">
-            <div class="section-eyebrow reveal">Digital first impression</div>
-            <h2 class="reveal reveal-d1">Your website is often your first sales conversation.</h2>
-            <div class="problem-cards"><div class="problem-card reveal reveal-d1"><p>Your offer is strong, but your website feels like an afterthought. Potential customers notice before they enquire.</p></div><div class="problem-card reveal reveal-d2"><p>Your team is spending hours explaining the same services, pricing, and next steps to every new lead.</p></div><div class="problem-card reveal reveal-d3"><p>Your best ideas are scattered across social posts, documents, and inboxes instead of working from one clear home.</p></div></div><div class="insight-callout reveal reveal-d4"><p>A clear website gives every visitor the <strong class="gold">confidence</strong> to take the next step — even when you are offline.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="pricing" class="section-shell">
-      <div class="container">
-        <div class="pricing-header reveal"><div class="placeholder-card service-placeholder"><span>PLACEHOLDER: Web design + marketing graphic</span><small>Browser window + megaphone illustration.</small></div>
-          <div class="section-eyebrow">Packages</div>
-          <h2>Pick your plan. Get booked out faster.</h2>
-          <p>Every package includes a strategy call, full build, and post-launch support. Choose the one that fits your business.</p>
-        </div>
-        <div class="pricing-grid">
-          <div class="price-card reveal reveal-d1 tilt-card">
-            <div class="price-tier">Launch</div><div class="price-name">Website Launch Package</div><div class="price-amount"><span>$1,500</span></div><div class="price-desc">One-time build for a polished, conversion-ready marketing website.</div>
-            <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom-designed marketing website (up to 5 pages)</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Mobile-responsive build</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Conversion-focused copywriting across all pages</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Email capture and lead magnet integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Basic on-page SEO setup</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact form and analytics integration</span></li>
-            </ul>
-            <button onclick="stripeCheckout('starter')" class="btn-primary" type="button">Start your website</button>
-          </div>
-          <div class="price-card featured reveal reveal-d2 tilt-card">
-            <div class="price-badge">Most Popular</div><div class="price-tier">Most Popular</div><div class="price-name">Full Brand + Site Package</div><div class="price-amount"><span>$2,500</span></div><div class="price-desc">One-time build for businesses ready to look exceptional and convert with confidence.</div>
-            <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in Website Launch</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Basic on-page SEO setup</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Conversion-focused copywriting across all pages</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Contact form and analytics integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Email capture and lead magnet integration</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>One round of revisions post-launch</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Launch handover and support</span></li>
-            </ul>
-            <button onclick="stripeCheckout('growth')" class="btn-primary" type="button">Start your website</button>
-          </div>
-          <div class="price-card reveal reveal-d3 tilt-card">
-            <div class="price-tier">Growth Partner</div><div class="price-name">Growth Partner Package</div><div class="price-amount"><span>$5,000</span><span style="font-size:1rem;font-weight:500;color:var(--grey);letter-spacing:0;">/mo</span></div><div class="price-desc">Ongoing website management, monthly marketing assets, SEO monitoring, reporting, and priority support.</div>
-            <ul class="price-features">
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Everything in Website Launch</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Ongoing website management</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly content and marketing asset creation</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>SEO monitoring and reporting</span></li>
-              <li class="price-feature"><span class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority support and updates</span></li>
-            </ul>
-            <button onclick="openRetainerModal()" class="btn-secondary" type="button">Book a consultation</button>
-          </div>
-        </div>
-        <div class="pricing-guarantee reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#10b3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Launch-ready websites with clear scope, secure Stripe checkout, and a thoughtful handover.
-        </div>
-      </div>
-    </section>
-    <section id="stats" class="section-shell">
-      <div class="container">
-        <div class="stats-header reveal">
-          <div class="section-eyebrow">Benchmarks</div>
-          <h2>Design that earns attention and makes the next step obvious.</h2>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card reveal reveal-d1 tilt-card"><div class="stat-number" data-target="3" data-suffix="x">3x</div><div class="stat-label">Conversion-ready experience</div><div class="stat-compare">from a clearer customer journey</div></div>
-          <div class="stat-card reveal reveal-d2 tilt-card"><div class="stat-number" data-target="68" data-suffix="%">68%</div><div class="stat-label">Mobile-first reach</div><div class="stat-compare">designed for how people browse</div></div>
-          <div class="stat-card reveal reveal-d3 tilt-card"><div class="stat-number" data-target="42" data-suffix="%">42%</div><div class="stat-label">More qualified enquiries</div><div class="stat-compare">with focused conversion paths</div></div>
-          <div class="stat-card reveal reveal-d4 tilt-card"><div class="stat-number" data-target="48" data-suffix=" hrs">48 hrs</div><div class="stat-label">Launch sprint target</div><div class="stat-compare">for focused website projects</div></div>
-        </div>
-        <p class="stats-source reveal">Illustrative project benchmarks; your goals and outcomes are scoped in the strategy call.</p>
-      </div>
-    </section>
-    <section id="case-study" class="section-shell">
-      <div class="cs-glow"></div>
-      <div class="container">
-        <div class="cs-layout">
-          <div class="visual-frame reveal tilt-card">
-            <div class="cs-img-wrap">
-              <img src="result1.png" alt="MCTOYOU Bot Overview dashboard showing active contacts and growth" loading="lazy" style="object-fit:contain;background:#f7f8fa;">
-              <div class="cs-img-badge">Live MCTOYOU Dashboard</div>
-            </div>
-          </div>
-          <div class="cs-card reveal reveal-d1 tilt-card">
-            <div class="cs-eyebrow">Client spotlight</div>
-            <h2>Ninja Motion Therapies</h2>
-            <p>A movement therapy clinic with a clear point of view. We shaped their digital presence around trust, clarity, and easier enquiries.</p>
-            <div class="cs-tags"><span class="cs-tag">MOVE</span><span class="cs-tag">RESET</span><span class="cs-tag">PRICE</span><span class="cs-tag">WORKSHOP</span><span class="cs-tag">JAW</span><span class="cs-tag">HIP</span><span class="cs-tag">NECK</span></div>
-            <p class="cs-outcome">We created a more confident digital home for Ninja Motion, turning their expertise into a clear website journey that helps visitors understand the offer, trust the brand, and take the next step.</p>
-            <div class="cs-quote">MCTOYOU gave our business a digital presence that finally feels like us.<div class="cs-quote-attr">Yuhan Harris, Ninja Motion Therapies</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="testimonials" class="section-shell testimonials-section">
-      <div class="container">
-        <div class="section-heading-centered reveal"><div class="section-eyebrow">Proof with a human voice</div><h2>Good work should feel good to recommend.</h2><p>Three placeholder stories are ready for real client quotes as projects launch.</p></div>
-        <div class="testimonials-grid">
-          <article class="testimonial-card glass-card reveal reveal-d1"><div class="placeholder-card testimonial-placeholder"><span>PLACEHOLDER: Client headshot</span><small>Replace with a real client photo.</small></div><blockquote>“The new site finally explains what we do in a way our clients understand.”</blockquote><cite>Placeholder client · service business</cite></article>
-          <article class="testimonial-card glass-card reveal reveal-d2"><div class="placeholder-card testimonial-placeholder"><span>PLACEHOLDER: Client headshot</span><small>Replace with a real client photo.</small></div><blockquote>“We went from sending people a list of links to confidently sending them to one clear website.”</blockquote><cite>Placeholder client · wellness brand</cite></article>
-          <article class="testimonial-card glass-card reveal reveal-d3"><div class="placeholder-card testimonial-placeholder"><span>PLACEHOLDER: Client headshot</span><small>Replace with a real client photo.</small></div><blockquote>“MCTOYOU made the whole process feel simple, focused, and genuinely built around us.”</blockquote><cite>Placeholder client · studio owner</cite></article>
-        </div>
-      </div>
-    </section>
-    <section id="faq" class="section-shell">
-      <div class="container">
-        <div class="faq-layout">
-          <div class="faq-header reveal">
-            <div class="section-eyebrow">FAQ</div>
-            <h2>Got questions? We've got answers.</h2>
-            <p>Everything you need to know before getting started.</p>
-          </div>
-          <div class="faq-list" id="faqList">
-            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a1" type="button"><span>Do I need an existing website?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a1" aria-hidden="true"><div class="faq-answer-inner"><p>No. We can work from a blank page, an existing site, or a set of ideas and turn them into a clear digital home for your business.</p></div></div></div>
-            <div class="faq-item reveal reveal-d1"><button class="faq-question" aria-expanded="false" aria-controls="faq-a2" type="button"><span>Will this work for my niche?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a2" aria-hidden="true"><div class="faq-answer-inner"><p>Yes. The process is tailored to your offer, audience, and goals — whether you are a service business, consultant, studio, clinic, or growing brand.</p></div></div></div>
-            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a3" type="button"><span>What if I already have a website?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a3" aria-hidden="true"><div class="faq-answer-inner"><p>We audit what is already working, keep the useful parts, and rebuild the friction points without throwing away your existing progress.</p></div></div></div>
-            <div class="faq-item reveal reveal-d2"><button class="faq-question" aria-expanded="false" aria-controls="faq-a4" type="button"><span>How fast will I see results?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a4" aria-hidden="true"><div class="faq-answer-inner"><p>Most focused website projects launch within 5–7 business days once the content and direction are approved. We will set a realistic timeline during the strategy call.</p></div></div></div>
-            <div class="faq-item reveal reveal-d3"><button class="faq-question" aria-expanded="false" aria-controls="faq-a5" type="button"><span>What happens after launch?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a5" aria-hidden="true"><div class="faq-answer-inner"><p>You get a clean handover and the confidence to run your site. If you want an ongoing partner, our Growth Partner retainer keeps your website, content, and marketing moving forward.</p></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="cta" class="section-shell">
-      <div class="cta-bg">
-        <img src="image2.png" alt="MCTOYOU integrations with Google Sheets, Zapier, HubSpot, and more" loading="lazy" style="object-fit:cover;background:#ffffff;">
-        <div class="cta-bg-overlay"></div>
-      </div>
-      <div class="container">
-        <div class="cta-content tilt-card">
-          <div class="section-eyebrow reveal">Final call</div>
-          <h2 class="reveal reveal-d1">Ready for a website that works as hard as you do? Every day without the right digital foundation costs you attention.</h2>
-          <p class="reveal reveal-d2" style="font-size:1.05rem;color:var(--grey);margin-bottom:36px;">Your competitors are already investing in how their business shows up. We build the website, content, and systems that make the next customer choose you.</p>
-          <a href="#pricing" class="btn-primary reveal reveal-d3">See Pricing &amp; Get Started</a>
-        </div>
-      </div>
-    </section>
+    <section id="contact" class="section-shell"><div class="container"><div class="cta-inner reveal"><div><div class="section-eyebrow">Let's connect</div><h2>Have a messy workflow worth making clearer?</h2><p>Tell me what you are trying to improve. I work across AI automation, full-stack builds, media pipelines, and the systems that connect them.</p></div><div class="cta-actions"><a href="mailto:taifalsaddawi@gmail.com" class="btn-primary">Email Taif</a><a href="tel:+61405500024" class="btn-secondary">0405 500 024</a></div></div></div></section>
   </main>
 
-  <a class="sticky-call" href="tel:+61405500024"><span class="sticky-call-dot"></span>Call MCTOYOU</a>
+  <footer class="footer"><div class="container"><div class="footer-top"><div class="footer-brand"><span>TAIF</span> AL SADDAWI</div><span class="footer-copy">AI automation engineer · Sydney, Australia</span><div class="footer-links"><a href="mailto:taifalsaddawi@gmail.com">taifalsaddawi@gmail.com</a><a href="https://mctoyou.com" rel="noopener">mctoyou.com</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div><div class="footer-bottom"><span>© 2026 Taif Al Saddawi</span><span>LLM workflows · Full-stack builds · UX-informed systems</span></div></div></footer>
 
-  <div class="modal-backdrop" id="retainerModal" role="dialog" aria-modal="true" aria-labelledby="retainerModalTitle" aria-hidden="true">
-    <div class="consult-modal glass-card">
-      <button class="modal-close" type="button" aria-label="Close consultation modal" onclick="closeRetainerModal()">&times;</button>
-      <div class="section-eyebrow">Growth Partner</div>
-      <h2 id="retainerModalTitle">Let's talk before we start.</h2>
-      <p>Our Growth Partner retainer is fully custom to your business, so we scope it together on a quick call first — no cookie-cutter packages at this level.</p>
-      <p>Call <a class="modal-phone" href="tel:+61405500024">0405 500 024</a> to book your consultation, and we'll map out exactly what your $5,000/month gets you.</p>
-      <a class="btn-primary" href="tel:+61405500024">Call 0405 500 024</a>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <div class="footer-brand"><span>MCTO</span>YOU</div><div class="placeholder-card founder-placeholder"><span>PLACEHOLDER: Founder/team photo</span><small>Replace with a professional MCTOYOU headshot.</small></div>
-          <span class="footer-copy">&copy; 2026 MCTOYOU — Media Created For You. Sydney, Australia.</span>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-          <div class="footer-links">
-            <a href="tel:+61405500024" aria-label="Call MCTOYOU on 0405 500 024"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>0405 500 024</a>
-            <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
-            <a href="mailto:support@mctoyou.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
-          </div>
-          <div class="footer-stripe"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure payments by Stripe</div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://js.stripe.com/v3/"></script>
   <script>
-    const STRIPE_CONFIG = {
-      publishableKey: 'pk_live_51TBcL6JXX3XVkdoSCvOHtRMF99zYWVhIfD7CKATIp4sVozWRLGGWpJHnsnVD5NFSi3OziHvzv4TF4TUXIlZuFpAG007kTigfBu',
-      paymentLinks: {
-        starter: 'https://buy.stripe.com/fZuaEYd5th1c9F91Bz0Fi01',
-        growth:  'https://buy.stripe.com/28E9AU2qPfX82cH0xv0Fi00',
-        scale:   null
-      }
-    };
-
-
-    function openRetainerModal() {
-      const modal = document.getElementById('retainerModal');
-      if (!modal) return;
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-      const close = modal.querySelector('.modal-close');
-      if (close) close.focus();
-    }
-    function closeRetainerModal() {
-      const modal = document.getElementById('retainerModal');
-      if (!modal) return;
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('modal-open');
-    }
-
-    function stripeCheckout(plan) {
-      const url = STRIPE_CONFIG.paymentLinks[plan];
-      if (!url || url.includes('YOUR_')) {
-        alert('Payment links are being set up. Please email support@mctoyou.com to get started.');
-        return;
-      }
-      window.location.href = url;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const loader = document.getElementById('pageLoader');
-      if (loader) window.setTimeout(function() { loader.classList.add('hide'); }, reduceMotion ? 0 : 520);
-
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            const counters = entry.target.querySelectorAll('.stat-number[data-target]');
-            counters.forEach(function(c) { animateCounter(c); });
-            if (entry.target.classList.contains('stat-number') && entry.target.dataset.target) animateCounter(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-      document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-
-      function animateCounter(el) {
-        if (el.dataset.counted) return;
-        el.dataset.counted = 'true';
-        const target = parseFloat(el.dataset.target);
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const decimals = parseInt(el.dataset.decimals, 10) || 0;
-        const duration = reduceMotion ? 1 : 2000;
-        let start = null;
-        function ease(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
-        function step(ts) {
-          if (!start) start = ts;
-          const p = Math.min((ts - start) / duration, 1);
-          el.textContent = prefix + (ease(p) * target).toFixed(decimals) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = prefix + target.toFixed(decimals) + suffix;
-        }
-        requestAnimationFrame(step);
-      }
-
-
-      const retainerModal = document.getElementById('retainerModal');
-      if (retainerModal) {
-        retainerModal.addEventListener('pointerup', function(e) {
-          if (e.target === retainerModal) closeRetainerModal();
-        });
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && retainerModal.getAttribute('aria-hidden') === 'false') closeRetainerModal();
-        });
-      }
-
-      const faqList = document.getElementById('faqList');
-      if (faqList) {
-        faqList.addEventListener('click', function(e) {
-          const btn = e.target.closest('.faq-question');
-          if (!btn) return;
-          const answer = btn.parentElement.querySelector('.faq-answer');
-          const isOpen = btn.getAttribute('aria-expanded') === 'true';
-          faqList.querySelectorAll('.faq-question').forEach(function(b) {
-            if (b !== btn) {
-              const otherAnswer = b.parentElement.querySelector('.faq-answer');
-              b.setAttribute('aria-expanded', 'false');
-              otherAnswer.style.maxHeight = '0';
-              otherAnswer.setAttribute('aria-hidden', 'true');
-            }
-          });
-          if (isOpen) {
-            btn.setAttribute('aria-expanded', 'false');
-            answer.style.maxHeight = '0';
-            answer.setAttribute('aria-hidden', 'true');
-          } else {
-            btn.setAttribute('aria-expanded', 'true');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-            answer.setAttribute('aria-hidden', 'false');
-          }
-        });
-      }
-
-      const nav = document.querySelector('.nav');
-      const progress = document.getElementById('scrollProgress');
-      const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-      const sections = navAnchors.map(function(a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-      function updateNav() {
-        const y = window.scrollY || document.documentElement.scrollTop;
-        if (nav) nav.classList.toggle('scrolled', y > 50);
-        if (progress) {
-          const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-          progress.style.width = Math.min(100, (y / max) * 100) + '%';
-        }
-        let current = null;
-        sections.forEach(function(section) { if (section.offsetTop - 160 <= y) current = section.id; });
-        navAnchors.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
-      }
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
-
-      const toggle = document.getElementById('navToggle');
-      const links = document.getElementById('navLinks');
-      if (toggle && links) {
-        toggle.addEventListener('click', function() {
-          const open = links.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-        links.querySelectorAll('a').forEach(function(a) {
-          a.addEventListener('click', function() {
-            links.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-
-      if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
-        const aura = document.getElementById('cursorAura');
-        window.addEventListener('pointermove', function(e) {
-          if (aura) {
-            aura.style.opacity = '1';
-            aura.style.left = e.clientX + 'px';
-            aura.style.top = e.clientY + 'px';
-          }
-          document.querySelectorAll('[data-parallax]').forEach(function(el) {
-            const amount = parseFloat(el.dataset.parallax) || 0.03;
-            const x = (e.clientX - window.innerWidth / 2) * amount;
-            const y = (e.clientY - window.innerHeight / 2) * amount;
-            el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-          });
-        }, { passive: true });
-
-        document.querySelectorAll('.tilt-card').forEach(function(card) {
-          card.addEventListener('pointermove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = 'perspective(900px) rotateX(' + (-y * 4).toFixed(2) + 'deg) rotateY(' + (x * 5).toFixed(2) + 'deg) translateY(-2px)';
-          });
-          card.addEventListener('pointerleave', function() { card.style.transform = ''; });
-        });
-      }
+      setTimeout(() => loader && loader.classList.add('hide'), reduceMotion ? 0 : 420);
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }), {threshold: 0.12});
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.stat-number[data-target]').forEach(el => { const target = Number(el.dataset.target); const suffix = el.dataset.suffix || ''; const animate = () => { const start = performance.now(); const tick = now => { const progress = Math.min((now - start) / (reduceMotion ? 1 : 1400), 1); el.textContent = Math.round(target * (1 - Math.pow(1 - progress, 4))) + suffix; if (progress < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }; const statObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { animate(); statObserver.disconnect(); } }), {threshold: .65}); statObserver.observe(el); });
+      const nav = document.querySelector('.nav'), progress = document.getElementById('scrollProgress'); const update = () => { const y = window.scrollY || 0; nav.classList.toggle('scrolled', y > 24); progress.style.width = Math.min(100, y / Math.max(1, document.documentElement.scrollHeight - innerHeight) * 100) + '%'; }; addEventListener('scroll', update, {passive:true}); update();
+      const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks'); toggle.addEventListener('click', () => { const open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); }); links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
+      if (!reduceMotion) { const aura = document.getElementById('cursorAura'); addEventListener('pointermove', e => { aura.style.opacity = '1'; aura.style.left = e.clientX + 'px'; aura.style.top = e.clientY + 'px'; }); document.querySelectorAll('.tilt-card').forEach(card => card.addEventListener('pointermove', e => { const r = card.getBoundingClientRect(); card.style.transform = `perspective(900px) rotateX(${((e.clientY-r.top)/r.height-.5)*-3}deg) rotateY(${((e.clientX-r.left)/r.width-.5)*3}deg) translateY(-4px)`; })); document.querySelectorAll('.tilt-card').forEach(card => card.addEventListener('pointerleave', () => card.style.transform = '')); }
     });
   </script>
 </body>
