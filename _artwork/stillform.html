@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stillform concept artwork</title>
+    <link rel="stylesheet" href="study.css" />
+    <style>
+      .page {
+        background: #eee9de;
+        color: #493221;
+      }
+      header {
+        border-bottom: 1px solid #a99b8f;
+        padding: 18px 4%;
+      }
+      .logo {
+        font-size: 48px;
+      }
+      .catalog {
+        display: grid;
+        grid-template-columns: 37% 63%;
+        flex: 1;
+        min-height: 0;
+      }
+      .words {
+        padding: 8% 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .title {
+        font: 80px/0.94 n;
+        letter-spacing: -4px;
+        margin: 32px 0 0;
+      }
+      .feature {
+        background: url("studio-concept.webp") center/cover;
+      }
+      .line {
+        width: 40px;
+        border-top: 1px solid;
+        margin: 30px 0 12px;
+      }
+      .strip {
+        background: #793f2b;
+        color: #fff8e7;
+        padding: 10px 4%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .pill {
+        align-self: start;
+      }
+      @media (max-width: 500px) {
+        .logo {
+          font-size: 38px;
+        }
+        .catalog {
+          display: flex;
+          flex-direction: column;
+        }
+        .words {
+          padding: 22px 6%;
+          display: block;
+        }
+        .title {
+          font-size: 50px;
+          margin: 16px 0;
+        }
+        .title br {
+          display: none;
+        }
+        .line,
+        .words .pill,
+        .words p {
+          display: none;
+        }
+        .feature {
+          flex: 1;
+        }
+        header {
+          padding: 18px 6%;
+        }
+        .strip span:last-child {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <span class="logo">Stillform</span>
+        <nav>
+          Objects &nbsp;&nbsp;&nbsp; Materials &nbsp;&nbsp;&nbsp; The studio
+        </nav>
+        <span class="mobile">Index +</span>
+      </header>
+      <div class="catalog">
+        <div class="words">
+          <div>
+            <span class="micro">Objects / Edition 01</span>
+            <div class="title">
+              Earth, <i>fired</i><br />
+              & formed.
+            </div>
+            <div class="line"></div>
+            <p>Hand-built vessels in stoneware.</p>
+          </div>
+          <span class="pill">Object index &nbsp; ↗</span>
+        </div>
+        <div class="feature"></div>
+      </div>
+      <div class="strip micro">
+        <span>Material library &nbsp; / &nbsp; The clay series</span
+        ><span>No. 001</span>
+      </div>
+    </div>
+  </body>
+</html>

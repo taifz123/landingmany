@@ -1,0 +1,7 @@
+exclude:
+  - AGENTS.md
+  - anti-slop.md
+  - design-excellence.md
+  - tool-workflow.md
+  - settings.json
+  - _artwork

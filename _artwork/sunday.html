@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sunday concept artwork</title>
+    <link rel="stylesheet" href="study.css" />
+    <style>
+      .page {
+        color: #f4eecb;
+        background: #40492d;
+      }
+      header {
+        background: #f5f0d5;
+        color: #363d26;
+        padding: 15px 4%;
+      }
+      .flag {
+        font-family: n;
+        font-weight: bold;
+        font-size: 26px;
+      }
+      .mast {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 4% 0;
+        gap: 12px;
+      }
+      .mast div {
+        font: bold 144px/1.05 n;
+        letter-spacing: -8px;
+      }
+      .sun {
+        font-size: 88px;
+      }
+      .image {
+        margin: 0 3.5%;
+        background-image: url("hospitality-concept.webp");
+        background-position: center 60%;
+      }
+      .sticker {
+        position: absolute;
+        right: 5%;
+        top: 8%;
+        border-radius: 50%;
+        background: #ece5a4;
+        color: #3f472b;
+        font: italic 32px/1.02 n;
+        text-align: center;
+        padding: 25px 17px;
+        transform: rotate(8deg);
+      }
+      footer {
+        color: #f5f0d5;
+      }
+      @media (max-width: 500px) {
+        .mast div {
+          font-size: 70px;
+          line-height: 1.1;
+          letter-spacing: -4px;
+        }
+        .sun {
+          font-size: 30px;
+        }
+        .sticker {
+          font-size: 27px;
+        }
+        header .micro:last-child {
+          display: none;
+        }
+        .image {
+          background-position: 46% center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <span class="flag">st.</span
+        ><span class="micro">Neighbourhood café & kitchen</span
+        ><span class="micro">Menu &nbsp; / &nbsp; Visit ↗</span>
+      </header>
+      <div class="mast">
+        <span class="sun">✺</span>
+        <div>Sunday Table</div>
+        <span class="sun">✺</span>
+      </div>
+      <div class="image">
+        <div class="sticker">Coffee,<br />all day.</div>
+      </div>
+      <footer class="micro">
+        <span>Pull up a chair.</span><span>Find us &nbsp; ↗</span>
+      </footer>
+    </div>
+  </body>
+</html>

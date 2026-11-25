@@ -1,30 +1,36 @@
 (() => {
-  const menu = document.querySelector('.site-nav');
-  const toggle = document.querySelector('.menu-toggle');
-  const header = document.querySelector('.site-header');
-  if (!menu || !toggle) return;
-  document.documentElement.classList.add('js');
-  const setMenu = (open) => {
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-    menu.classList.toggle('is-open', open);
+  const header = document.querySelector(".masthead");
+  const toggle = header?.querySelector(".menu-toggle");
+  const menu = header?.querySelector(".main-nav");
+  if (!toggle || !menu) return;
+
+  const setOpen = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.classList.toggle("open", open);
   };
-  toggle.addEventListener('click', () => {
-    const opening = toggle.getAttribute('aria-expanded') !== 'true';
-    setMenu(opening);
-    if (opening) menu.querySelector('a')?.focus();
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "false";
+    setOpen(open);
+    if (open) menu.querySelector("a").focus();
   });
-  menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-      setMenu(false);
+  header.addEventListener("focusout", (event) => {
+    if (!header.contains(event.relatedTarget)) setOpen(false);
+  });
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("click", (event) => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("open")) {
+      setOpen(false);
       toggle.focus();
     }
   });
-  document.addEventListener('click', (event) => {
-    if (!header.contains(event.target) && toggle.getAttribute('aria-expanded') === 'true') setMenu(false);
-  });
-  const setHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
-  window.addEventListener('scroll', setHeader, { passive: true });
-  setHeader();
+  window
+    .matchMedia("(max-width: 640px)")
+    .addEventListener("change", () => setOpen(false));
+  window.addEventListener("pageshow", () => setOpen(false));
+  document.documentElement.classList.add("js");
 })();

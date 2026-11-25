@@ -1,0 +1,92 @@
+@font-face {
+  font-family: n;
+  src: url("../assets/fonts/newsreader-regular.woff2");
+}
+@font-face {
+  font-family: n;
+  src: url("../assets/fonts/newsreader-italic.woff2");
+  font-style: italic;
+}
+@font-face {
+  font-family: s;
+  src: url("../assets/fonts/space-grotesk-latin.woff2");
+  font-weight: 300 700;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font:
+    16px s,
+    Arial,
+    sans-serif;
+}
+.page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header,
+footer,
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header {
+  padding: 26px 4%;
+  z-index: 1;
+}
+footer {
+  padding: 20px 4%;
+}
+.micro {
+  font: 600 13px s;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+.logo {
+  font: 500 44px n;
+  letter-spacing: -2px;
+}
+.image {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+nav {
+  font-size: 16px;
+}
+.pill {
+  border: 1px solid currentColor;
+  border-radius: 55px;
+  padding: 9px 18px;
+}
+.mobile {
+  display: none;
+}
+@media (max-width: 500px) {
+  nav {
+    display: none;
+  }
+  .mobile {
+    display: block;
+    font: 18px s;
+  }
+  header {
+    padding: 20px 6%;
+  }
+  .micro {
+    font-size: 11px;
+  }
+  footer {
+    padding: 20px 6%;
+  }
+  .logo {
+    font-size: 32px;
+  }
+}
