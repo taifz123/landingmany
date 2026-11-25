@@ -9,7 +9,11 @@
     toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
     menu.classList.toggle('is-open', open);
   };
-  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  toggle.addEventListener('click', () => {
+    const opening = toggle.getAttribute('aria-expanded') !== 'true';
+    setMenu(opening);
+    if (opening) menu.querySelector('a')?.focus();
+  });
   menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
