@@ -5,7 +5,7 @@ globs: ["*.html", "*.css"]
 
 # Design Excellence
 
-The site is a professional website design and development business. Preserve a predominantly warm-white editorial layout, restrained deep teal and gold accents, Syne display type and Space Grotesk body type. Use generous whitespace, intentional asymmetry, fine borders and subtle depth. Vary section composition rather than repeating identical card grids.
+The site is a professional website design and development business. Preserve a predominantly warm-white editorial layout, plum accents, Newsreader display type and Space Grotesk body type. Use generous whitespace, intentional asymmetry, fine borders and subtle depth. Vary section composition rather than repeating identical card grids.
 
 Use carefully chosen, optimized commercial-style imagery and device details where they support the story. Clearly label fictional design concepts and never imply they are client projects. Avoid invented claims, personal biographies, unrelated services and em dashes in website copy.
 
